@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as React from 'react'
 
 interface CtaInfoProps {
-    color?: string
+    bgColor?: string
     title: string
     description: string
     link: {
@@ -13,12 +13,12 @@ interface CtaInfoProps {
     icon: IconDefinition
 }
 
-const CtaInfo: React.FC<CtaInfoProps> = ({ title, description, color = 'gray', link, icon }) => {
+const CtaInfo: React.FC<CtaInfoProps> = ({ title, description, bgColor = 'bg-gray-600', link, icon }) => {
     return (
         <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
             <FontAwesomeIcon
                 icon={icon}
-                className={`text-white p-5 text-center items-center justify-center content-center w-16 h-16 mb-5 shadow-lg rounded-full bg-${color}-600`}
+                className={`text-white p-5 text-center items-center justify-center content-center w-16 h-16 mb-5 shadow-lg rounded-full ${bgColor}`}
             />
             <h3 className="text-3xl mb-2 font-semibold leading-normal text-white">{title}</h3>
             <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-50">{description}</p>

@@ -2,16 +2,23 @@ import * as React from 'react'
 
 interface CtaCardProps {
     img: string
-    color: string
+    bgColor: string
+    textColor: string
     title: string
     description: string
 }
 
-const CtaCard: React.FC<CtaCardProps> = ({ img, title, description, color }) => {
+const CtaCard: React.FC<CtaCardProps> = ({
+    img,
+    title,
+    description,
+    bgColor = 'bg-pink-600',
+    textColor = 'bg-pink-600',
+}) => {
     return (
         <div className="w-full md:w-4/12 px-4 mr-auto ml-auto">
             <div
-                className={`relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-${color}-600`}
+                className={`relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ${bgColor}`}
             >
                 <img alt="..." src={img} className="w-full align-middle rounded-t-lg" />
                 <blockquote className="relative p-8 mb-4">
@@ -25,7 +32,7 @@ const CtaCard: React.FC<CtaCardProps> = ({ img, title, description, color }) => 
                             top: '-94px',
                         }}
                     >
-                        <polygon points="-30,95 583,95 583,65" className={`text-${color}-600 fill-current`}></polygon>
+                        <polygon points="-30,95 583,95 583,65" className={`${textColor} fill-current`}></polygon>
                     </svg>
                     <h4 className="text-xl font-bold text-white">{title}</h4>
                     <p className="text-md font-light mt-2 text-white">{description}</p>

@@ -6,17 +6,18 @@ interface ListInfoCardProps {
     title: string
     description: string
     icon: IconDefinition
-    color: string
+    bgColor: string
+    textColor: string
     listItems: Array<{ label: string }>
 }
 
-const ListInfoCard: React.FC<ListInfoCardProps> = ({ title, description, icon, color, listItems }) => {
+const ListInfoCard: React.FC<ListInfoCardProps> = ({ title, description, icon, bgColor, textColor, listItems }) => {
     return (
         <div className="w-full md:w-5/12 ml-auto mr-auto px-4">
             <div className="md:pr-12">
                 <FontAwesomeIcon
                     icon={icon}
-                    className={`text-white p-5 text-center items-center justify-center content-center w-16 h-16 mb-5 shadow-lg rounded-full bg-${color}-300`}
+                    className={`text-white p-5 text-center items-center justify-center content-center w-16 h-16 mb-5 shadow-lg rounded-full ${bgColor}`}
                 />
                 <h3 className="text-3xl font-semibold">{title}</h3>
                 <p className="mt-4 text-lg leading-relaxed text-gray-600 text-justify">{description}</p>
@@ -26,7 +27,7 @@ const ListInfoCard: React.FC<ListInfoCardProps> = ({ title, description, icon, c
                             <div className="flex items-center">
                                 <div>
                                     <span
-                                        className={`text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-${color}-600 bg-${color}-300 mr-3`}
+                                        className={`text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full ${textColor} ${bgColor} mr-3`}
                                     ></span>
                                 </div>
                                 <div>

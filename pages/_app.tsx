@@ -1,5 +1,5 @@
+import '../src/common/styles/index.css'
 import '../src/common/styles/main.scss'
-import 'tailwindcss/tailwind.css'
 
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 

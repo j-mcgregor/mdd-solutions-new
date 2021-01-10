@@ -1,58 +1,58 @@
 {
-  "env": {
-    "development": {
-      "presets": ["next/babel"],
-      "plugins": [
-        ["styled-components", { "ssr": true }],
-        [
-          "module-resolver",
-          {
-            "root": ["./"],
-            "alias": {
-              "@components": "./src/components"
-            }
-          }
-        ]
-      ]
-    },
-    "production": {
-      "presets": ["next/babel"],
-      "plugins": [
-        ["styled-components", { "ssr": true }],
-        [
-          "module-resolver",
-          {
-            "root": ["./"],
-            "alias": {
-              "@components": "./src/components"
-            }
-          }
-        ]
-      ]
-    },
-    "test": {
-      "presets": [
-        [
-          "next/babel",
-          {
-            "preset-env": {
-              "modules": "commonjs"
-            }
-          }
-        ],
-      ],
-      "plugins": [
-        ["styled-components", { "ssr": true }],
-        [
-          "module-resolver",
-          {
-            "root": ["./"],
-            "alias": {
-              "@components": "./src/components"
-            }
-          }
-        ]
-      ]
+    "env": {
+        "development": {
+            "presets": ["next/babel"],
+            "plugins": [
+                ["styled-components", { "ssr": true }],
+                [
+                    "module-resolver",
+                    {
+                        "root": ["./"],
+                        "alias": {
+                            "@components": "./src/components"
+                        }
+                    }
+                ]
+            ]
+        },
+        "production": {
+            "presets": ["next/babel"],
+            "plugins": [
+                ["styled-components", { "ssr": true }],
+                [
+                    "module-resolver",
+                    {
+                        "root": ["./"],
+                        "alias": {
+                            "@components": "./src/components"
+                        }
+                    }
+                ]
+            ]
+        },
+        "test": {
+            "presets": [
+                [
+                    "next/babel",
+                    {
+                        "preset-env": {
+                            "modules": "commonjs"
+                        }
+                    }
+                ]
+            ],
+            "plugins": [
+                ["styled-components", { "ssr": true }],
+                [
+                    "module-resolver",
+                    {
+                        "root": ["./"],
+                        "alias": {
+                            "@components": "./src/components"
+                        }
+                    }
+                ]
+            ]
+        }
     }
-  }
 }

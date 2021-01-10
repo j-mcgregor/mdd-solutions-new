@@ -83,19 +83,19 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                             <div className="flex flex-wrap">
                                 <InfoCard
                                     title="Building Contracting"
-                                    color="red"
+                                    color="bg-red-400"
                                     description="Vacancies, comprising of general build, regional build, residential and major contractors. Covering Sales, Commercial and Operations positions."
                                     icon={faAward}
                                 />
                                 <InfoCard
                                     title="Building Services Design"
-                                    color="yellow"
+                                    color="bg-yellow-400"
                                     description="Vacancies Comprising of MEP design roles for consultancies, contractors and client professional teams."
                                     icon={faRetweet}
                                 />
                                 <InfoCard
                                     title="M&E Contracting"
-                                    color="green"
+                                    color="bg-green-400"
                                     description="Vacancies, comprising of mechanical engineering, electrical engineering and public health (MEP) engineering."
                                     icon={faFingerprint}
                                 />
@@ -105,7 +105,7 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                                 <CtaInfo
                                     title="Working with us is a pleasure"
                                     description="Don't let your uses guess by attaching tooltips and popoves to any element. Just make sure you enable them first via JavaScript."
-                                    color="pink"
+                                    bgColor="bg-pink-600"
                                     link={{ to: '/', label: 'See more' }}
                                     icon={faUserFriends}
                                 />
@@ -114,7 +114,8 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                                     title="Top Notch Services"
                                     description="The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever happens."
                                     img="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
-                                    color="pink"
+                                    bgColor="bg-pink-600"
+                                    textColor="text-pink-600"
                                 />
                             </div>
                         </div>
@@ -135,7 +136,8 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                                     title="A growing company"
                                     description="The extension comes with three pre-built pages to help you get started faster. You can change the text and images and you're good to go."
                                     icon={faRocket}
-                                    color="yellow"
+                                    bgColor="bg-yellow-300"
+                                    textColor="text-yellow-600"
                                     listItems={[
                                         {
                                             label: 'Carefully crafted components',

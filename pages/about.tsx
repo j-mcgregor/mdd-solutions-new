@@ -4,20 +4,12 @@ import Head from 'next/head'
 import Prismic from 'prismic-javascript'
 import { RichText } from 'prismic-reactjs'
 import * as React from 'react'
-import styled from 'styled-components'
 
 import { Client } from '../prismic-configuration'
-import Banner from '../src/components/Banner'
 import ImgCard from '../src/components/ImgCard'
 import ListInfoCard from '../src/components/ListInfoCard'
-import Polygon from '../src/components/Polygon'
 import MainLayout from '../src/MainLayout'
 import { StaticPageProps } from '../types'
-
-const StyledAbout = styled.section`
-    width: 100%;
-    height: 100%;
-`
 
 export async function getStaticProps() {
     const about = await Client().query(Prismic.Predicates.at('document.type', 'about'))
@@ -49,7 +41,8 @@ export const About: NextPage<StaticPageProps<typeof getStaticProps>> = ({ about,
                                 title={RichText.asText(title)}
                                 description={RichText.asText(description)}
                                 icon={faRocket}
-                                color="blue"
+                                bgColor="bg-blue-300"
+                                textColor="text-blue-600"
                                 listItems={[
                                     {
                                         label: 'Tailored Approach',
