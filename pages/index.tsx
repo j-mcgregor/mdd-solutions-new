@@ -1,213 +1,231 @@
+import { faAward, faFingerprint, faRetweet, faRocket, faUserFriends } from '@fortawesome/free-solid-svg-icons'
+import { NextPage } from 'next'
 import Head from 'next/head'
+import Prismic from 'prismic-javascript'
+import { RichText } from 'prismic-reactjs'
+import * as React from 'react'
 
-export const Home = (): JSX.Element => (
-  <div className="container">
-    <Head>
-      <title>Create Next App</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
+import { Client } from '../prismic-configuration'
+import CtaCard from '../src/components/CtaCard'
+import CtaInfo from '../src/components/CtaInfo'
+import Form from '../src/components/Form'
+import ImgCard from '../src/components/ImgCard'
+import InfoCard from '../src/components/InfoCard'
+import ListInfoCard from '../src/components/ListInfoCard'
+import Polygon from '../src/components/Polygon'
+import MainLayout from '../src/MainLayout'
+import { StaticPageProps } from '../types'
 
-    <main>
-      <h1 className="title">
-        Welcome to <a href="https://nextjs.org">Next.js!</a>
-      </h1>
+export async function getStaticProps() {
+    const main = await Client().query(Prismic.Predicates.at('document.type', 'role'))
+    const homepage = await Client().query(Prismic.Predicates.at('document.type', 'homepage'))
+    const contact = await Client().query(Prismic.Predicates.at('document.type', 'contact'))
 
-      <p className="description">
-        Get started by editing <code>pages/index.tsx</code>
-      </p>
+    return {
+        props: {
+            main,
+            homepage,
+            contact,
+        },
+    }
+}
 
-      <button
-        onClick={() => {
-          window.alert('With typescript and Jest')
-        }}
-      >
-        Test Button
-      </button>
+export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepage, contact }): JSX.Element => {
+    const { title, description, background_image } = homepage?.results[0].data
+    const { logo, profile_pic } = contact?.results[0].data
 
-      <div className="grid">
-        <a href="https://nextjs.org/docs" className="card">
-          <h3>Documentation &rarr;</h3>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+    return (
+        <div>
+            <Head>
+                <title>Home | MDD Solutions</title>
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+            <MainLayout contact={contact?.results[0].data} logo={logo}>
+                <main>
+                    <div
+                        className="relative pt-16 pb-32 flex content-center items-center justify-center"
+                        style={{
+                            minHeight: '85vh',
+                        }}
+                    >
+                        <div
+                            className="absolute top-0 w-full h-full bg-center bg-cover"
+                            style={{
+                                backgroundImage: `url('${background_image?.url}')`,
+                            }}
+                        >
+                            <span id="blackOverlay" className="w-full h-full absolute opacity-75 bg-blue-900"></span>
+                        </div>
+                        <div className="container relative mx-auto">
+                            <div className="items-center flex flex-wrap">
+                                <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+                                    <div className="pr-12">
+                                        <h1 className="text-white font-semibold text-8xl py-10">
+                                            <span className="text-yellow-400">New</span> Beginnings.
+                                        </h1>
+                                        <p className="mt-4 text-lg text-gray-300">
+                                            <RichText render={description} />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
+                            style={{ height: '70px', transform: 'translateZ(0)' }}
+                        >
+                            <Polygon />
+                        </div>
+                    </div>
 
-        <a href="https://nextjs.org/learn" className="card">
-          <h3>Learn &rarr;</h3>
-          <p>Learn about Next.js in an interactive course with quizzes!</p>
-        </a>
+                    <section className="pb-20 bg-blue-900 -mt-24">
+                        <div className="container mx-auto px-4">
+                            <div className="flex flex-wrap">
+                                <InfoCard
+                                    title="Building Contracting"
+                                    color="red"
+                                    description="Vacancies, comprising of general build, regional build, residential and major contractors. Covering Sales, Commercial and Operations positions."
+                                    icon={faAward}
+                                />
+                                <InfoCard
+                                    title="Building Services Design"
+                                    color="yellow"
+                                    description="Vacancies Comprising of MEP design roles for consultancies, contractors and client professional teams."
+                                    icon={faRetweet}
+                                />
+                                <InfoCard
+                                    title="M&E Contracting"
+                                    color="green"
+                                    description="Vacancies, comprising of mechanical engineering, electrical engineering and public health (MEP) engineering."
+                                    icon={faFingerprint}
+                                />
+                            </div>
 
-        <a
-          href="https://github.com/vercel/next.js/tree/master/examples"
-          className="card"
-        >
-          <h3>Examples &rarr;</h3>
-          <p>Discover and deploy boilerplate example Next.js projects.</p>
-        </a>
+                            <div className="flex flex-wrap items-center mt-32">
+                                <CtaInfo
+                                    title="Working with us is a pleasure"
+                                    description="Don't let your uses guess by attaching tooltips and popoves to any element. Just make sure you enable them first via JavaScript."
+                                    color="pink"
+                                    link={{ to: '/', label: 'See more' }}
+                                    icon={faUserFriends}
+                                />
 
-        <a
-          href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          className="card"
-        >
-          <h3>Deploy &rarr;</h3>
-          <p>Instantly deploy your Next.js site to a public URL with Vercel.</p>
-        </a>
-      </div>
-    </main>
+                                <CtaCard
+                                    title="Top Notch Services"
+                                    description="The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever happens."
+                                    img="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
+                                    color="pink"
+                                />
+                            </div>
+                        </div>
+                    </section>
 
-    <footer>
-      <a
-        href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Powered by <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-      </a>
-    </footer>
+                    <section className="relative py-32">
+                        <div
+                            className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+                            style={{ height: '80px', transform: 'translateZ(0)' }}
+                        >
+                            <Polygon color="text-white" />
+                        </div>
 
-    <style jsx>{`
-      .container {
-        min-height: 100vh;
-        padding: 0 0.5rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
+                        <div className="container mx-auto px-4">
+                            <div className="items-center flex flex-wrap">
+                                <ImgCard img="https://images.unsplash.com/photo-1555212697-194d092e3b8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" />
+                                <ListInfoCard
+                                    title="A growing company"
+                                    description="The extension comes with three pre-built pages to help you get started faster. You can change the text and images and you're good to go."
+                                    icon={faRocket}
+                                    color="yellow"
+                                    listItems={[
+                                        {
+                                            label: 'Carefully crafted components',
+                                        },
+                                        {
+                                            label: 'Amazing page examples',
+                                        },
+                                        {
+                                            label: 'Dynamic components',
+                                        },
+                                    ]}
+                                />
+                            </div>
+                        </div>
+                    </section>
 
-      main {
-        padding: 5rem 0;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
+                    <section className="relative pt-20 pb-48 bg-yellow-400">
+                        <div
+                            className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+                            style={{ height: '80px', transform: 'translateZ(0)' }}
+                        >
+                            <Polygon color="text-yellow-400" />
+                        </div>
+                        <div className="container mx-auto px-4">
+                            <div className="flex flex-wrap justify-center text-center mb-24">
+                                <div className="w-full lg:w-6/12 px-4">
+                                    <h2 className="text-4xl font-semibold">Meet our founder</h2>
+                                    <p className="text-lg leading-relaxed m-4 text-gray-600">
+                                        According to the National Oceanic and Atmospheric Administration, Ted, Scambos,
+                                        NSIDClead scentist, puts the potentially record maximum.
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="flex flex-wrap">
+                                <div className="w-full mb-12 px-4">
+                                    <div className="px-6">
+                                        <img
+                                            alt="..."
+                                            src={profile_pic?.url}
+                                            className="shadow-lg rounded-full max-w-full mx-auto"
+                                            style={{ maxWidth: '280px' }}
+                                        />
+                                        <div className="pt-6 text-center">
+                                            <h5 className="text-xl font-bold">Michael Dalton</h5>
+                                            <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
+                                                Lion tamer
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
 
-      footer {
-        width: 100%;
-        height: 100px;
-        border-top: 1px solid #eaeaea;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
+                    <section className="pb-20 relative block bg-blue-900">
+                        <div
+                            className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+                            style={{ height: '80px', transform: 'translateZ(0)' }}
+                        >
+                            <Polygon color="text-blue-900" />
+                        </div>
 
-      footer img {
-        margin-left: 0.5rem;
-      }
+                        <div className="container mx-auto px-4 lg:pt-24 lg:pb-64">
+                            <div className="flex flex-wrap text-center justify-center">
+                                <div className="w-full lg:w-6/12 px-4">
+                                    <h2 className="text-4xl font-semibold text-white">Get in touch</h2>
+                                    <p className="text-lg leading-relaxed mt-4 mb-4 text-gray-500">
+                                        Put the potentially record low maximum sea ice extent tihs year down to low ice.
+                                        According to the National Oceanic and Atmospheric Administration, Ted, Scambos.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
 
-      footer a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      .title a {
-        color: #0070f3;
-        text-decoration: none;
-      }
-
-      .title a:hover,
-      .title a:focus,
-      .title a:active {
-        text-decoration: underline;
-      }
-
-      .title {
-        margin: 0;
-        line-height: 1.15;
-        font-size: 4rem;
-      }
-
-      .title,
-      .description {
-        text-align: center;
-      }
-
-      .description {
-        line-height: 1.5;
-        font-size: 1.5rem;
-      }
-
-      code {
-        background: #fafafa;
-        border-radius: 5px;
-        padding: 0.75rem;
-        font-size: 1.1rem;
-        font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-          DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-      }
-
-      .grid {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-
-        max-width: 800px;
-        margin-top: 3rem;
-      }
-
-      .card {
-        margin: 1rem;
-        flex-basis: 45%;
-        padding: 1.5rem;
-        text-align: left;
-        color: inherit;
-        text-decoration: none;
-        border: 1px solid #eaeaea;
-        border-radius: 10px;
-        transition: color 0.15s ease, border-color 0.15s ease;
-      }
-
-      .card:hover,
-      .card:focus,
-      .card:active {
-        color: #0070f3;
-        border-color: #0070f3;
-      }
-
-      .card h3 {
-        margin: 0 0 1rem 0;
-        font-size: 1.5rem;
-      }
-
-      .card p {
-        margin: 0;
-        font-size: 1.25rem;
-        line-height: 1.5;
-      }
-
-      .logo {
-        height: 1em;
-      }
-
-      @media (max-width: 600px) {
-        .grid {
-          width: 100%;
-          flex-direction: column;
-        }
-      }
-    `}</style>
-
-    <style jsx global>{`
-      html,
-      body {
-        padding: 0;
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-          Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-    `}</style>
-  </div>
-)
+                    <section className="relative block py-24 lg:pt-0 bg-blue-900">
+                        <div className="container mx-auto px-4">
+                            <div className="flex flex-wrap justify-center lg:-mt-64 -mt-48">
+                                <div className="w-full lg:w-6/12 px-4">
+                                    <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-900">
+                                        <Form />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </MainLayout>
+        </div>
+    )
+}
 
 export default Home

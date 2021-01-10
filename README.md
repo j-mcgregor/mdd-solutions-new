@@ -25,3 +25,9 @@ yarn create next-app --example with-typescript-eslint-jest with-typescript-eslin
 ```
 
 Deploy it to the cloud with [Vercel](https://vercel.com/import?filter=next.js&utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+
+# TIME LOG
+
+Monday 4th Jan - 4-6.30, 7-8.30 - 3hrs
+Tuesday 5th Jan - 8-9am, 5-6pm - 2hrs
+Friday 8th Jan - 8-10pm
