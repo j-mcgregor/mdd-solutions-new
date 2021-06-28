@@ -6,6 +6,7 @@
     "scripts": {
         "dev": "next dev",
         "build": "next build",
+        "postbuild": "next-on-netlify",
         "start": "next start",
         "export": "npm run build && next export",
         "type-check": "tsc --pretty --noEmit",
@@ -16,8 +17,7 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "lint-staged",
-            "pre-push": "yarn run type-check"
+            "pre-commit": "lint-staged"
         }
     },
     "lint-staged": {
@@ -43,6 +43,7 @@
         "classnames": "^2.3.1",
         "moment": "^2.29.1",
         "next": "latest",
+        "next-on-netlify": "^3.0.1",
         "node-sass": "^4.14.1",
         "postcss": "^8.2.2",
         "prismic-javascript": "^3.0.2",
