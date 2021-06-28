@@ -1,4 +1,3 @@
-import { faRocket } from '@fortawesome/free-solid-svg-icons'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import Prismic from 'prismic-javascript'
@@ -24,7 +23,7 @@ export async function getStaticProps() {
 }
 
 export const About: NextPage<StaticPageProps<typeof getStaticProps>> = ({ about, contact }): JSX.Element => {
-    const { title, description } = about.results[0].data
+    const { title, description, list_items, about_image } = about.results[0].data
     const { logo } = contact.results[0].data
 
     return (
@@ -34,31 +33,17 @@ export const About: NextPage<StaticPageProps<typeof getStaticProps>> = ({ about,
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <MainLayout contact={contact.results[0].data} logo={logo}>
-                <section className="relative py-32">
+                <section className="relative pt-48 pb-56">
                     <div className="container mx-auto px-4">
                         <div className="items-center flex flex-wrap">
                             <ListInfoCard
                                 title={RichText.asText(title)}
                                 description={RichText.asText(description)}
-                                icon={faRocket}
-                                bgColor="bg-blue-300"
+                                bgColor="bg-yellow-400"
                                 textColor="text-blue-600"
-                                listItems={[
-                                    {
-                                        label: 'Tailored Approach',
-                                    },
-                                    {
-                                        label: 'Reliable Service',
-                                    },
-                                    {
-                                        label: 'Unique',
-                                    },
-                                    {
-                                        label: 'Specialists',
-                                    },
-                                ]}
+                                listItems={list_items?.map((li) => ({ label: RichText.asText(li.item) }))}
                             />
-                            <ImgCard img="https://images.unsplash.com/photo-1555212697-194d092e3b8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" />
+                            <ImgCard img={about_image.url} />
                         </div>
                     </div>
                 </section>

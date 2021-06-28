@@ -29,13 +29,17 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({ cont
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <MainLayout contact={contact.results[0].data} logo={logo}>
-                <Header title={title} description={description} />
+                <Header
+                    title={title}
+                    description={description}
+                    bgColor="bg-gradient-to-br from-green-800 to-green-900"
+                />
                 <section className="relative py-32">
                     <div
                         className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
                         style={{ height: '80px', transform: 'translateZ(0)' }}
                     >
-                        <Polygon color="text-white" />
+                        <Polygon fillColor="#fff" />
                     </div>
 
                     <div className="container mx-auto px-4">

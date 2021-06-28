@@ -16,6 +16,9 @@ module.exports = {
                     900: '#0b1e2f',
                 },
             },
+            gridTemplateRows: {
+                layout: 'auto auto',
+            },
         },
     },
     variants: {

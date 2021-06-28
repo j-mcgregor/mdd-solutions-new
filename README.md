@@ -30,4 +30,10 @@ Deploy it to the cloud with [Vercel](https://vercel.com/import?filter=next.js&ut
 
 Monday 4th Jan - 4-6.30, 7-8.30 - 3hrs
 Tuesday 5th Jan - 8-9am, 5-6pm - 2hrs
-Friday 8th Jan - 8-10pm
+Friday 8th Jan - 8-10pm - 2hrs
+Saturday 9th Jan - 2-6pm, 9.30-11pm - 5.5hrs 
+
+Time to first draft - 12.5 hrs
+
+Feedback...
+

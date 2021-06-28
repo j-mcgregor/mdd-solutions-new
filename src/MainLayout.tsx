@@ -7,12 +7,13 @@ import Navbar from './components/Navbar'
 interface MainLayoutProps {
     contact: ContactDataProps
     logo?: ImageProps
+    invertNavLinks?: boolean
 }
 
-const MainLayout: NextPage<MainLayoutProps> = ({ contact, children, logo }) => {
+const MainLayout: NextPage<MainLayoutProps> = ({ contact, children, logo, invertNavLinks = false }) => {
     return (
         <>
-            <Navbar logo={logo} />
+            <Navbar logo={logo} invertNavLinks={invertNavLinks} />
             {children}
             <Footer {...contact} />
         </>

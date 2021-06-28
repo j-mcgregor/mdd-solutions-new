@@ -8,6 +8,7 @@ import { ImageProps } from '../../types'
 
 interface NavbarProps {
     logo?: ImageProps
+    invertNavLinks?: boolean
 }
 
 const StyledLink = styled.a`
@@ -17,15 +18,19 @@ const StyledLink = styled.a`
     align-items: center;
 `
 
-const Navbar: NextPage<NavbarProps> = ({ logo }) => {
+const Navbar: NextPage<NavbarProps> = ({ logo, invertNavLinks }) => {
     const router = useRouter()
     const isDark = router.asPath === '/about'
 
     const textColor = isDark ? 'text-gray-600' : 'text-gray-300'
 
     const linkTabClasses = {
-        active: 'text-yellow-400 px-5 uppercase text-sm font-light tracking-wider cursor-pointer',
-        default: `${textColor} hover:text-gray-400 px-5 uppercase text-sm font-light tracking-wider cursor-pointer`,
+        active: `${
+            invertNavLinks ? 'text-gray-600' : 'text-yellow-400'
+        } px-5 uppercase text-sm font-light tracking-wider cursor-pointer`,
+        default: `${
+            invertNavLinks ? 'text-gray-500' : textColor
+        } hover:text-gray-400 px-5 uppercase text-sm font-light tracking-wider cursor-pointer`,
     }
 
     return (
@@ -49,15 +54,15 @@ const Navbar: NextPage<NavbarProps> = ({ logo }) => {
                                         About
                                     </StyledLink>
                                 </Link>
-                                <Link href="/clients">
+                                <Link href="/candidates">
                                     <StyledLink
                                         className={
-                                            router.asPath === '/clients'
+                                            router.asPath === '/candidates'
                                                 ? linkTabClasses.active
                                                 : linkTabClasses.default
                                         }
                                     >
-                                        Clients
+                                        Candidates
                                     </StyledLink>
                                 </Link>
                                 <Link href="/vacancies">

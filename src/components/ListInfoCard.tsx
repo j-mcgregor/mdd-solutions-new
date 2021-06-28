@@ -5,7 +5,7 @@ import * as React from 'react'
 interface ListInfoCardProps {
     title: string
     description: string
-    icon: IconDefinition
+    icon?: IconDefinition
     bgColor: string
     textColor: string
     listItems: Array<{ label: string }>
@@ -15,12 +15,14 @@ const ListInfoCard: React.FC<ListInfoCardProps> = ({ title, description, icon, b
     return (
         <div className="w-full md:w-5/12 ml-auto mr-auto px-4">
             <div className="md:pr-12">
-                <FontAwesomeIcon
-                    icon={icon}
-                    className={`text-white p-5 text-center items-center justify-center content-center w-16 h-16 mb-5 shadow-lg rounded-full ${bgColor}`}
-                />
+                {icon && (
+                    <FontAwesomeIcon
+                        icon={icon}
+                        className={`text-white p-5 text-center items-center justify-center content-center w-16 h-16 mb-5 shadow-lg rounded-full ${bgColor}`}
+                    />
+                )}
                 <h3 className="text-3xl font-semibold">{title}</h3>
-                <p className="mt-4 text-lg leading-relaxed text-gray-600 text-justify">{description}</p>
+                <p className="mt-4 text-md leading-relaxed text-gray-600 text-justify">{description}</p>
                 <ul className="list-none mt-6">
                     {listItems.map((li, i) => (
                         <li key={i} className="py-2">

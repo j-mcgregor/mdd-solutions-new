@@ -1,17 +1,14 @@
-import { faAward, faFingerprint, faRetweet, faRocket, faUserFriends } from '@fortawesome/free-solid-svg-icons'
+import { faAward, faBookmark, faUpload, faUserFriends } from '@fortawesome/free-solid-svg-icons'
 import { NextPage } from 'next'
 import Head from 'next/head'
+import Link from 'next/link'
 import Prismic from 'prismic-javascript'
 import { RichText } from 'prismic-reactjs'
 import * as React from 'react'
 
 import { Client } from '../prismic-configuration'
-import CtaCard from '../src/components/CtaCard'
-import CtaInfo from '../src/components/CtaInfo'
 import Form from '../src/components/Form'
-import ImgCard from '../src/components/ImgCard'
 import InfoCard from '../src/components/InfoCard'
-import ListInfoCard from '../src/components/ListInfoCard'
 import Polygon from '../src/components/Polygon'
 import MainLayout from '../src/MainLayout'
 import { StaticPageProps } from '../types'
@@ -31,8 +28,30 @@ export async function getStaticProps() {
 }
 
 export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepage, contact }): JSX.Element => {
-    const { title, description, background_image } = homepage?.results[0].data
-    const { logo, profile_pic } = contact?.results[0].data
+    const {
+        title,
+        description,
+        background_image,
+        cta,
+        sectors,
+        sector_title,
+        sector_subtitle,
+    } = homepage?.results[0].data
+    const { logo } = contact?.results[0].data
+
+    const servicesMap = {
+        candidate: { icon: faAward, color: 'bg-red-400', href: '/candidates' },
+        clients: { icon: faUserFriends, color: 'bg-blue-400', href: '/clients' },
+        vacancies: { icon: faBookmark, color: 'bg-green-400', href: '/vacancies' },
+        upload_cv: { icon: faUpload, color: 'bg-yellow-400', href: '/upload_cv' },
+    }
+
+    const sectorsMap = {
+        main_contracting: { href: '/candidates' },
+        me_contracting: { href: '/clients' },
+        building_services_design: { href: '/vacancies' },
+        executive_search_and_select: { href: '/upload_cv' },
+    }
 
     return (
         <div>
@@ -74,87 +93,63 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                             className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
                             style={{ height: '70px', transform: 'translateZ(0)' }}
                         >
-                            <Polygon />
+                            <Polygon fillColor="#0b1e2f" />
                         </div>
                     </div>
 
-                    <section className="pb-20 bg-blue-900 -mt-24">
-                        <div className="container mx-auto px-4">
-                            <div className="flex flex-wrap">
-                                <InfoCard
-                                    title="Building Contracting"
-                                    color="bg-red-400"
-                                    description="Vacancies, comprising of general build, regional build, residential and major contractors. Covering Sales, Commercial and Operations positions."
-                                    icon={faAward}
-                                />
-                                <InfoCard
-                                    title="Building Services Design"
-                                    color="bg-yellow-400"
-                                    description="Vacancies Comprising of MEP design roles for consultancies, contractors and client professional teams."
-                                    icon={faRetweet}
-                                />
-                                <InfoCard
-                                    title="M&E Contracting"
-                                    color="bg-green-400"
-                                    description="Vacancies, comprising of mechanical engineering, electrical engineering and public health (MEP) engineering."
-                                    icon={faFingerprint}
-                                />
-                            </div>
-
-                            <div className="flex flex-wrap items-center mt-32">
-                                <CtaInfo
-                                    title="Working with us is a pleasure"
-                                    description="Don't let your uses guess by attaching tooltips and popoves to any element. Just make sure you enable them first via JavaScript."
-                                    bgColor="bg-pink-600"
-                                    link={{ to: '/', label: 'See more' }}
-                                    icon={faUserFriends}
-                                />
-
-                                <CtaCard
-                                    title="Top Notch Services"
-                                    description="The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever happens."
-                                    img="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
-                                    bgColor="bg-pink-600"
-                                    textColor="text-pink-600"
-                                />
+                    <section className="pt-20 pb-40 bg-blue-900">
+                        <div className="container mx-auto">
+                            <div className="grid grid-cols-4 gap-4">
+                                {cta?.map((c, i) => (
+                                    <Link key={i} href={servicesMap[c.id].href}>
+                                        <a className="">
+                                            <InfoCard
+                                                title={<RichText render={c.service_title} />}
+                                                color={servicesMap[c.id].color}
+                                                description={<RichText render={c.service_summary} />}
+                                                icon={servicesMap[c.id].icon}
+                                                classNames="transform hover:-translate-y-2 transition duration-300 ease-in-out"
+                                            />
+                                        </a>
+                                    </Link>
+                                ))}
                             </div>
                         </div>
                     </section>
-
+                    {/* SECTORS */}
                     <section className="relative py-32">
                         <div
                             className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
                             style={{ height: '80px', transform: 'translateZ(0)' }}
                         >
-                            <Polygon color="text-white" />
+                            <Polygon fillColor="#fff" />
                         </div>
 
-                        <div className="container mx-auto px-4">
-                            <div className="items-center flex flex-wrap">
-                                <ImgCard img="https://images.unsplash.com/photo-1555212697-194d092e3b8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" />
-                                <ListInfoCard
-                                    title="A growing company"
-                                    description="The extension comes with three pre-built pages to help you get started faster. You can change the text and images and you're good to go."
-                                    icon={faRocket}
-                                    bgColor="bg-yellow-300"
-                                    textColor="text-yellow-600"
-                                    listItems={[
-                                        {
-                                            label: 'Carefully crafted components',
-                                        },
-                                        {
-                                            label: 'Amazing page examples',
-                                        },
-                                        {
-                                            label: 'Dynamic components',
-                                        },
-                                    ]}
-                                />
+                        <div className="container mx-auto w-1/2 px-4 text-center">
+                            <h2 className="font-semibold text-5xl py-10">
+                                <RichText render={sector_title} />
+                            </h2>
+                            <h4 className="font-semibold text-2xl py-10">
+                                <RichText render={sector_subtitle} />
+                            </h4>
+                            <div className="grid grid-cols-2  gap-4">
+                                {sectors?.map((c, i) => (
+                                    <InfoCard
+                                        key={i}
+                                        title={<RichText render={c.sector_title} />}
+                                        color="bg-white"
+                                        description={<RichText render={c.sector_summary} />}
+                                        icon={sectorsMap[c.id]?.icon}
+                                        descriptionSize="small"
+                                        uppercaseTitle
+                                        titleClasses="text-gray-400 font-light"
+                                    />
+                                ))}
                             </div>
                         </div>
                     </section>
-
-                    <section className="relative pt-20 pb-48 bg-yellow-400">
+                    {/* MEET THE FOUNDER */}
+                    {/* <section className="relative pt-20 pb-48 bg-yellow-400">
                         <div
                             className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
                             style={{ height: '80px', transform: 'translateZ(0)' }}
@@ -190,14 +185,14 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                                 </div>
                             </div>
                         </div>
-                    </section>
-
-                    <section className="pb-20 relative block bg-blue-900">
+                    </section> */}
+                    {/* CONTACT */}
+                    <section className="pb-20 relative block bg-yellow-400">
                         <div
                             className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
                             style={{ height: '80px', transform: 'translateZ(0)' }}
                         >
-                            <Polygon color="text-blue-900" />
+                            <Polygon fillColor="#FBBF24" />
                         </div>
 
                         <div className="container mx-auto px-4 lg:pt-24 lg:pb-64">
@@ -213,7 +208,7 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                         </div>
                     </section>
 
-                    <section className="relative block py-24 lg:pt-0 bg-blue-900">
+                    <section className="relative block py-24 lg:pt-0 bg-yellow-400">
                         <div className="container mx-auto px-4">
                             <div className="flex flex-wrap justify-center lg:-mt-64 -mt-48">
                                 <div className="w-full lg:w-6/12 px-4">
