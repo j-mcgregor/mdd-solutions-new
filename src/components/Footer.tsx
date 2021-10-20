@@ -72,7 +72,7 @@ const Footer: NextPage<ContactDataProps> = ({ links, footnote }) => {
                     </div>
                 </div>
             </div>
-            <div className="footnote p-8 flex justify-center content-center uppercase bg-black text-yellow-400 text-xs">
+            <div className="footnote p-8 flex justify-center content-center uppercase bg-gray-900 text-yellow-400 text-xs">
                 {footnote && <RichText render={footnote} />}
             </div>
         </StyledFooter>

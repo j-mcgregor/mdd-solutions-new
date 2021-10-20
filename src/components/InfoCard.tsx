@@ -2,6 +2,7 @@ import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import classnames from 'classnames'
 import * as React from 'react'
+import { AnimateIn } from './AnimateIn'
 
 interface InfoCardProps {
     title: React.ReactNode
@@ -25,24 +26,37 @@ const InfoCard: React.FC<InfoCardProps> = ({
     titleClasses,
 }) => {
     return (
-        <div className={classnames('lg:pt-12 pt-10 px-2 text-center', classNames)}>
-            <div className="relative flex flex-col min-w-0 break-words bg-white w-full h-full mb-8 shadow-lg rounded-lg">
-                <div className="px-4 py-6 flex-auto">
+        <AnimateIn
+            animateIn
+            triggerOnce
+            className={classnames(
+                'lg:p-4 text-center border-2 border-blue-700 rounded-3xl bg-gray-50 shadow-xl',
+                classNames
+            )}
+        >
+            <div className="relative flex flex-col min-w-0 break-words w-full h-full">
+                <div className="flex-auto">
                     {icon && (
                         <FontAwesomeIcon
                             icon={icon}
                             className={`text-white ${color} p-5 text-center items-center justify-center content-center w-16 h-16 mb-5 shadow-lg rounded-full mx-auto`}
                         />
                     )}
-                    <h6 className={classnames('text-xl tracking-wider', { uppercase: uppercaseTitle }, titleClasses)}>
+                    <h6
+                        className={classnames(
+                            'text-xl tracking-wider text-gray-700 h-16 font-bold',
+                            { uppercase: uppercaseTitle },
+                            titleClasses
+                        )}
+                    >
                         {title}
                     </h6>
-                    <p className={classnames('mt-2 mb-4 p-8 text-gray-600', descriptionSize === 'small' && 'text-xs')}>
+                    <p className={classnames('mt-2 mb-4 p-1 text-gray-500', descriptionSize === 'small' && 'text-xs')}>
                         {description}
                     </p>
                 </div>
             </div>
-        </div>
+        </AnimateIn>
     )
 }
 

@@ -3,6 +3,9 @@ import Head from 'next/head'
 import Prismic from 'prismic-javascript'
 import { RichText } from 'prismic-reactjs'
 import * as React from 'react'
+import { Disclosure } from '@headlessui/react'
+import { FaChevronDown } from 'react-icons/fa'
+import classNames from 'classnames'
 
 import { Client } from '../prismic-configuration'
 import ImgCard from '../src/components/ImgCard'
@@ -33,17 +36,28 @@ export const About: NextPage<StaticPageProps<typeof getStaticProps>> = ({ about,
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <MainLayout contact={contact.results[0].data} logo={logo}>
-                <section className="relative pt-48 pb-56">
-                    <div className="container mx-auto px-4">
-                        <div className="items-center flex flex-wrap">
-                            <ListInfoCard
-                                title={RichText.asText(title)}
-                                description={RichText.asText(description)}
-                                bgColor="bg-yellow-400"
-                                textColor="text-blue-600"
-                                listItems={list_items?.map((li) => ({ label: RichText.asText(li.item) }))}
-                            />
-                            <ImgCard img={about_image.url} />
+                <section className="relative max-w-7xl mx-auto pt-16 pb-16 grid grid-cols-1 xl:grid-cols-2 ">
+                    <div className="flex flex-col items-start justify-start py-20 leading-9">
+                        <ListInfoCard title={title} description={description} bgColor="bg-yellow-400" />
+                    </div>
+                    <div className="bg-white py-20">
+                        <ImgCard img={about_image.url} />
+                    </div>
+                </section>
+                <section className="bg-yellow-500 p-20">
+                    <div className="container max-w-7xl mx-auto">
+                        <div className="text-4xl py-5">Why choose us?</div>
+                        <div className="leading-8 divide-y-2 divide-gray-800 divide-opacity-50">
+                            {list_items.map((li, i) => (
+                                <div className="py-8" key={i}>
+                                    <div className="text-3xl tracking-widest py-3">
+                                        <RichText render={li.list_title} />
+                                    </div>
+                                    <div className="text-xl leading-9">
+                                        <RichText render={li.item} />
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </section>

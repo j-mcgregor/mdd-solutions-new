@@ -7,9 +7,10 @@ import { RichText } from 'prismic-reactjs'
 import * as React from 'react'
 
 import { Client } from '../prismic-configuration'
+import { AnimateIn } from '../src/components/AnimateIn'
 import Form from '../src/components/Form'
 import InfoCard from '../src/components/InfoCard'
-import Polygon from '../src/components/Polygon'
+import Polygon, { InversePolygon } from '../src/components/Polygon'
 import MainLayout from '../src/MainLayout'
 import { StaticPageProps } from '../types'
 
@@ -61,7 +62,7 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
             </Head>
             <MainLayout contact={contact?.results[0].data} logo={logo}>
                 <main>
-                    <div
+                    <section
                         className="relative pt-16 pb-32 flex content-center items-center justify-center"
                         style={{
                             minHeight: '85vh',
@@ -79,12 +80,16 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                             <div className="items-center flex flex-wrap">
                                 <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                                     <div className="pr-12">
-                                        <h1 className="text-white font-semibold text-8xl py-10">
-                                            <span className="text-yellow-400">New</span> Beginnings.
-                                        </h1>
-                                        <p className="mt-4 text-lg text-gray-300">
-                                            <RichText render={description} />
-                                        </p>
+                                        <AnimateIn
+                                            animateIn
+                                            triggerOnce
+                                            className="text-white font-semibold text-8xl py-10"
+                                        >
+                                            <h1>
+                                                <div className="text-yellow-400">Welcome</div>{' '}
+                                                <div className="text-3xl"> to</div> MDD Solutions
+                                            </h1>
+                                        </AnimateIn>
                                     </div>
                                 </div>
                             </div>
@@ -95,99 +100,23 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                         >
                             <Polygon fillColor="#0b1e2f" />
                         </div>
-                    </div>
+                    </section>
 
-                    <section className="pt-20 pb-40 bg-blue-900">
-                        <div className="container mx-auto">
-                            <div className="grid grid-cols-4 gap-4">
-                                {cta?.map((c, i) => (
-                                    <Link key={i} href={servicesMap[c.id].href}>
-                                        <a className="">
-                                            <InfoCard
-                                                title={<RichText render={c.service_title} />}
-                                                color={servicesMap[c.id].color}
-                                                description={<RichText render={c.service_summary} />}
-                                                icon={servicesMap[c.id].icon}
-                                                classNames="transform hover:-translate-y-2 transition duration-300 ease-in-out"
-                                            />
-                                        </a>
-                                    </Link>
-                                ))}
+                    <section className="relative pt-16 pb-32 flex content-center items-center justify-center bg-blue-900">
+                        <div className="container max-w-6xl relative mx-auto">
+                            <div className="mt-4 text-xl text-gray-300 leading-8 p-10 xl:p-1">
+                                <RichText render={description} />
                             </div>
+                        </div>
+                        <div
+                            className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
+                            style={{ height: '70px', transform: 'translateZ(0)' }}
+                        >
+                            <Polygon fillColor="#0b1e2f" />
                         </div>
                     </section>
                     {/* SECTORS */}
-                    <section className="relative py-32">
-                        <div
-                            className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
-                            style={{ height: '80px', transform: 'translateZ(0)' }}
-                        >
-                            <Polygon fillColor="#fff" />
-                        </div>
-
-                        <div className="container mx-auto w-1/2 px-4 text-center">
-                            <h2 className="font-semibold text-5xl py-10">
-                                <RichText render={sector_title} />
-                            </h2>
-                            <h4 className="font-semibold text-2xl py-10">
-                                <RichText render={sector_subtitle} />
-                            </h4>
-                            <div className="grid grid-cols-2  gap-4">
-                                {sectors?.map((c, i) => (
-                                    <InfoCard
-                                        key={i}
-                                        title={<RichText render={c.sector_title} />}
-                                        color="bg-white"
-                                        description={<RichText render={c.sector_summary} />}
-                                        icon={sectorsMap[c.id]?.icon}
-                                        descriptionSize="small"
-                                        uppercaseTitle
-                                        titleClasses="text-gray-400 font-light"
-                                    />
-                                ))}
-                            </div>
-                        </div>
-                    </section>
-                    {/* MEET THE FOUNDER */}
-                    {/* <section className="relative pt-20 pb-48 bg-yellow-400">
-                        <div
-                            className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
-                            style={{ height: '80px', transform: 'translateZ(0)' }}
-                        >
-                            <Polygon color="text-yellow-400" />
-                        </div>
-                        <div className="container mx-auto px-4">
-                            <div className="flex flex-wrap justify-center text-center mb-24">
-                                <div className="w-full lg:w-6/12 px-4">
-                                    <h2 className="text-4xl font-semibold">Meet our founder</h2>
-                                    <p className="text-lg leading-relaxed m-4 text-gray-600">
-                                        According to the National Oceanic and Atmospheric Administration, Ted, Scambos,
-                                        NSIDClead scentist, puts the potentially record maximum.
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="flex flex-wrap">
-                                <div className="w-full mb-12 px-4">
-                                    <div className="px-6">
-                                        <img
-                                            alt="..."
-                                            src={profile_pic?.url}
-                                            className="shadow-lg rounded-full max-w-full mx-auto"
-                                            style={{ maxWidth: '280px' }}
-                                        />
-                                        <div className="pt-6 text-center">
-                                            <h5 className="text-xl font-bold">Michael Dalton</h5>
-                                            <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
-                                                Lion tamer
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section> */}
-                    {/* CONTACT */}
-                    <section className="pb-20 relative block bg-yellow-400">
+                    <section className="relative py-32 bg-yellow-400 pb-56">
                         <div
                             className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
                             style={{ height: '80px', transform: 'translateZ(0)' }}
@@ -195,27 +124,63 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                             <Polygon fillColor="#FBBF24" />
                         </div>
 
-                        <div className="container mx-auto px-4 lg:pt-24 lg:pb-64">
-                            <div className="flex flex-wrap text-center justify-center">
-                                <div className="w-full lg:w-6/12 px-4">
-                                    <h2 className="text-4xl font-semibold text-white">Get in touch</h2>
-                                    <p className="text-lg leading-relaxed mt-4 mb-4 text-gray-500">
-                                        Put the potentially record low maximum sea ice extent tihs year down to low ice.
-                                        According to the National Oceanic and Atmospheric Administration, Ted, Scambos.
-                                    </p>
-                                </div>
+                        <div className="container mx-auto max-w-7xl px-4 text-center">
+                            <h2 className="font-semibold text-5xl py-3">
+                                <RichText render={sector_title} />
+                            </h2>
+                            {sector_subtitle && (
+                                <h4 className="font-semibold text-2xl py-3">
+                                    <RichText render={sector_subtitle} />
+                                </h4>
+                            )}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                                {sectors?.map((c, i) => (
+                                    <InfoCard
+                                        key={i}
+                                        title={<RichText render={c.sector_title} />}
+                                        color="bg-white"
+                                        description={<RichText render={c.sector_summary} />}
+                                        icon={sectorsMap[c.id]?.icon}
+                                        // descriptionSize="small"
+                                        uppercaseTitle
+                                        titleClasses="text-gray-400 font-light"
+                                    />
+                                ))}
                             </div>
                         </div>
                     </section>
+                    {/* CONTACT */}
+                    <section className="pb-20 relative block bg-gray-800">
+                        <div
+                            className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+                            style={{ height: '80px', transform: 'translateZ(0)' }}
+                        >
+                            <Polygon fillColor="#1F2937" />
+                        </div>
 
-                    <section className="relative block py-24 lg:pt-0 bg-yellow-400">
-                        <div className="container mx-auto px-4">
-                            <div className="flex flex-wrap justify-center lg:-mt-64 -mt-48">
-                                <div className="w-full lg:w-6/12 px-4">
-                                    <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-900">
-                                        <Form />
-                                    </div>
-                                </div>
+                        <div className="container max-w-4xl mx-auto px-4 lg:pt-24 lg:pb-20">
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 text-center justify-center pt-10 sm:pt-1">
+                                <AnimateIn animateIn triggerOnce className="flex items-center justify-center">
+                                    <Link href="/">
+                                        <a className="h-52 w-52 flex items-center justify-center bg-blue-400 text-white rounded-full text-xl uppercase shadow-xl border-8 border-white hover:bg-blue-900 hover:border-yellow-400 transition duration-200">
+                                            Vacancies
+                                        </a>
+                                    </Link>
+                                </AnimateIn>
+                                <AnimateIn animateIn triggerOnce className="flex items-center justify-center">
+                                    <Link href="/">
+                                        <a className="h-52 w-52 flex items-center justify-center bg-blue-400 text-white rounded-full text-xl uppercase shadow-xl border-8 border-white hover:bg-blue-900 hover:border-yellow-400 transition duration-200">
+                                            Get in touch
+                                        </a>
+                                    </Link>
+                                </AnimateIn>
+                                <AnimateIn animateIn triggerOnce className="flex items-center justify-center">
+                                    <Link href="/">
+                                        <a className="h-52 w-52 flex items-center justify-center bg-blue-400 text-white rounded-full text-xl uppercase shadow-xl border-8 border-white hover:bg-blue-900 hover:border-yellow-400 transition duration-200">
+                                            Send CV
+                                        </a>
+                                    </Link>
+                                </AnimateIn>
                             </div>
                         </div>
                     </section>
