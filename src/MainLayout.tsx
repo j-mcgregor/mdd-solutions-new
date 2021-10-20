@@ -1,5 +1,6 @@
 import { NextPage } from 'next'
 import * as React from 'react'
+
 import { ContactDataProps, ImageProps } from '../types'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
@@ -10,10 +11,10 @@ interface MainLayoutProps {
     invertNavLinks?: boolean
 }
 
-const MainLayout: NextPage<MainLayoutProps> = ({ contact, children, logo, invertNavLinks = false }) => {
+const MainLayout: NextPage<MainLayoutProps> = ({ contact, children, logo }) => {
     return (
         <>
-            <Navbar logo={logo} invertNavLinks={invertNavLinks} />
+            <Navbar logo={logo} />
             {children}
             <Footer {...contact} />
         </>
