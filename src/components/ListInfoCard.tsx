@@ -20,9 +20,7 @@ const ListInfoCard: React.FC<ListInfoCardProps> = ({ title, description, icon, b
                     />
                 )}
                 <h3 className="text-3xl font-semibold">{<RichText render={title} />}</h3>
-                <p className="mt-4 text-md leading-relaxed text-gray-600 text-justify">
-                    {<RichText render={description} />}
-                </p>
+                <p className="mt-4 text-md leading-8 text-gray-600 text-justify">{<RichText render={description} />}</p>
             </div>
         </div>
     )

@@ -30,7 +30,7 @@ const InfoCard: React.FC<InfoCardProps> = ({
             animateIn
             triggerOnce
             className={classnames(
-                'lg:p-4 text-center border-2 border-blue-700 rounded-3xl bg-gray-50 shadow-xl',
+                'lg:p-4 text-center border-2 border-blue-700 rounded-lg bg-gray-50 shadow-xl',
                 classNames
             )}
         >

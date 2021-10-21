@@ -39,16 +39,18 @@ const Navbar: NextPage<NavbarProps> = ({ logo }) => {
 
     const textColorMap = {
         '/candidates': 'text-blue-900',
+        '/vacancies': 'text-blue-900 hover:text-white',
     }
 
     const bgColorMap = {
         '/': transparent ? 'bg-transparent' : 'bg-blue-900',
         '/candidates': 'bg-yellow-500',
+        '/vacancies': 'bg-yellow-400',
     }
 
     const linkTabClasses = (invert?: boolean) => ({
         active: `${
-            invert ? 'text-gray-100' : 'text-yellow-400'
+            invert ? 'text-gray-100' : textColorMap[router.asPath] ?? 'text-yellow-400'
         } px-5 uppercase text-sm font-light tracking-wider cursor-pointer`,
         default: `${
             invert ? 'text-gray-500' : textColorMap[router.asPath] ?? 'text-white'
@@ -101,7 +103,9 @@ const Navbar: NextPage<NavbarProps> = ({ logo }) => {
                                             ref={React.createRef()}
                                             className={
                                                 nav.isActive
-                                                    ? linkTabClasses(router.asPath === '/candidates').active
+                                                    ? linkTabClasses(
+                                                          ['/candidates', '/vacancies'].includes(router.asPath)
+                                                      ).active
                                                     : linkTabClasses().default
                                             }
                                         >

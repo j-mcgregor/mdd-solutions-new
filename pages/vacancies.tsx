@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import moment from 'moment'
 import { NextPage } from 'next'
 import Head from 'next/head'
@@ -32,31 +33,42 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({
     contact,
     roles,
 }): JSX.Element => {
-    const { title, description, background_image } = vacancies.results[0].data
+    const { title } = vacancies.results[0].data
     const { logo } = contact.results[0].data
 
-    const vacancyList = roles.results?.map((v, i) => (
-        <div key={i} className="bg-white shadow overflow-hidden sm:rounded-lg mb-8">
-            <div className="px-4 py-5 sm:px-6">
-                <Link href={`/vacancies/${v.uid}`}>
-                    <a>
-                        <h3 className="hover:text-yellow-400 text-lg leading-6 font-medium text-blue-900 pb-3">
-                            {RichText.render(v.data.title)}
-                        </h3>
-                    </a>
-                </Link>
-                <p className="mt-1 max-w-2xl text-sm text-gray-500 pb-8">{RichText.render(v.data.summary)}</p>
-                <div>
-                    <p className="mt-1 max-w-2xl text-xs text-gray-500">
-                        First Uploaded {moment(v.data.first_uploaded).format('LL')}
-                    </p>
-                    <p className="mt-1 max-w-2xl text-xs text-gray-500">
-                        Start Date: {moment(v.data.start_date).format('LL')}
-                    </p>
+    const vacancyList = roles.results?.map((v, i) => {
+        const borderColor = i % 2 === 0 ? 'border-blue-400' : 'border-yellow-400'
+        const buttonColor = i % 2 === 0 ? 'bg-blue-400 hover:bg-blue-300' : 'bg-yellow-400 hover:bg-yellow-300'
+        return (
+            <div
+                key={i}
+                className={classNames(
+                    'bg-white shadow overflow-hidden sm:rounded-lg mb-8 border-2 grid grid-cols-1 md:grid-cols-4 p-4 md:p-0',
+                    borderColor
+                )}
+            >
+                <div className="px-4 py-5 sm:px-6 col-span-3">
+                    <div className="text-lg leading-6 font-medium text-blue-900 pb-3 uppercase tracking-wider">
+                        {RichText.render(v.data.title)}
+                    </div>
+                    <p className="mt-1 max-w-2xl text-sm text-gray-500 pb-8">{RichText.render(v.data.summary)}</p>
+                    <div>
+                        <p className="mt-1 max-w-2xl text-xs text-gray-500">
+                            First Uploaded {moment(v.data.first_uploaded).format('LL')}
+                        </p>
+                        <p className="mt-1 max-w-2xl text-xs text-gray-500">
+                            Start Date: {moment(v.data.start_date).format('LL')}
+                        </p>
+                    </div>
+                </div>
+                <div className="flex flex-col items-center justify-center">
+                    <Link href={`/vacancies/${v.id}`}>
+                        <a className={classNames(buttonColor, 'px-4 py-3 rounded-md text-white')}>Apply now</a>
+                    </Link>
                 </div>
             </div>
-        </div>
-    ))
+        )
+    })
 
     return (
         <div>
@@ -65,28 +77,19 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <MainLayout contact={contact.results[0].data} logo={logo} invertNavLinks>
-                <Header title={title} bgColor="bg-gradient-to-br from-yellow-400 to-yellow-300" />
-                <section className="relative py-32">
+                <Header title={title} bgColor="bg-gradient-to-br from-yellow-500 to-yellow-300" />
+                <section className="relative py-10">
                     <div
                         className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
                         style={{ height: '80px', transform: 'translateZ(0)' }}
                     >
                         <Polygon fillColor="#fff" />
                     </div>
-
-                    <div className="container mx-auto px-4">
-                        <div className="items-center flex flex-row flex-wrap w-10/12 mx-auto text-sm leading-8 text-justify pt-8">
-                            <ImgCard img={background_image.url} />
-                            <div className="flex-1 pl-32">
-                                <RichText render={description} />
-                            </div>
-                        </div>
-                    </div>
                 </section>
                 {vacancyList.length && (
-                    <section className="relative pb-32">
+                    <section className="relative">
                         <div className="container mx-auto max-w-5xl px-4">
-                            <h3 className="text-gray-600 text-sm tracking-widest mb-4 uppercase">Current openings</h3>
+                            <div className="text-gray-600 text-xl tracking-widest mb-4 uppercase">Current openings</div>
                             {vacancyList}
                         </div>
                     </section>

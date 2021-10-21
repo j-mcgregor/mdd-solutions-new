@@ -1,5 +1,5 @@
 import moment from 'moment'
-import { NextPage } from 'next'
+import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Prismic from 'prismic-javascript'
@@ -11,36 +11,32 @@ import Header from '../../src/components/Header'
 import Polygon from '../../src/components/Polygon'
 import MainLayout from '../../src/MainLayout'
 import { StaticPageProps } from '../../types'
+import { htmlSerializer } from '../../src/lib/htmlSerializer'
 
-export const getServerSideProps = async () => {
-    const vacancies = await Client().query(Prismic.Predicates.at('document.type', 'vacancies'))
-    const roles = await Client().query(Prismic.Predicates.at('document.type', 'role'))
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+    const role = await Client().query(Prismic.Predicates.at('document.id', params.id))
     const contact = await Client().query(Prismic.Predicates.at('document.type', 'contact'))
 
     return {
         props: {
-            vacancies,
-            roles,
+            role: role.results[0].data,
             contact,
         },
     }
 }
 
-const VacancyShow: NextPage<StaticPageProps<typeof getServerSideProps>> = ({ vacancies, contact, roles }) => {
+const VacancyShow: NextPage<StaticPageProps<typeof getServerSideProps>> = ({ contact, role }) => {
     const { logo } = contact.results[0].data
-
-    const router = useRouter()
-    const role = roles.results.find((r) => r.uid === router.query.id)
 
     return (
         <div>
             <Head>
-                <title>Contact | MDD Solutions</title>
+                <title>{RichText.asText(role.title)}</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <MainLayout contact={contact.results[0].data} logo={logo} invertNavLinks>
-                <Header title={role.data.title} bgColor="bg-gradient-to-br from-gray-700 to-gray-900" />
-                <section className="relative py-32">
+                {role.title && <Header title={role.title} bgColor="bg-gradient-to-tr from-blue-700 to-blue-900" />}
+                <section className="relative py-12 px-4">
                     <div
                         className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
                         style={{ height: '80px', transform: 'translateZ(0)' }}
@@ -48,18 +44,50 @@ const VacancyShow: NextPage<StaticPageProps<typeof getServerSideProps>> = ({ vac
                         <Polygon fillColor="#fff" />
                     </div>
 
-                    <div className="container mx-auto px-4">
-                        <div className="flex flex-col flex-wrap w-8/12 mx-auto text-sm leading-8 text-justify pt-8">
-                            <div className="mb-3">
-                                <p className="mt-1 text-xs text-gray-500">
-                                    First Uploaded {moment(role.data.first_uploaded).format('LL')}
-                                </p>
-                                <p className="mt-1 text-xs text-gray-500">
-                                    Start Date: {moment(role.data.start_date).format('LL')}
-                                </p>
-                            </div>
-                            <div className="flex-1">
-                                <RichText render={role.data.description} />
+                    <div className="max-w-6xl mx-auto mb-3">
+                        {role.first_uploaded && (
+                            <p className="mt-1 text-xs text-gray-500">
+                                First Uploaded {moment(role.first_uploaded).format('LL')}
+                            </p>
+                        )}
+                        {role.start_date && (
+                            <p className="mt-1 text-xs text-gray-500">
+                                Start Date: {moment(role.start_date).format('LL')}
+                            </p>
+                        )}
+                    </div>
+                    <div className="container mx-auto max-w-6xl grid grid-cols-1 xl:grid-cols-5 gap-10">
+                        <div className="col-span-3 leading-8 text-justify space-y-5">
+                            {role.company && (
+                                <div className="">
+                                    <div className="text-xl py-3">Company</div>
+                                    <RichText render={role.company} htmlSerializer={htmlSerializer} />
+                                </div>
+                            )}
+                            {role.role && (
+                                <div className="">
+                                    <div className="text-xl py-3">Role</div>
+                                    <RichText render={role.role} htmlSerializer={htmlSerializer} />
+                                </div>
+                            )}
+                            {role.education_and_experience && (
+                                <div className="">
+                                    <div className="text-xl py-3">Education & Experience</div>
+                                    <RichText render={role.education_and_experience} htmlSerializer={htmlSerializer} />
+                                </div>
+                            )}
+                        </div>
+                        <div className="col-span-2">
+                            {role.overview && (
+                                <div className="leading-7">
+                                    <div className="text-xl py-3">Overview</div>
+                                    <RichText render={role.overview} htmlSerializer={htmlSerializer} />
+                                </div>
+                            )}
+                            <div className="mt-10 text-center w-full">
+                                <a className="px-4 py-3 rounded-md text-white bg-blue-600 hover:bg-blue-500">
+                                    Apply now
+                                </a>
                             </div>
                         </div>
                     </div>

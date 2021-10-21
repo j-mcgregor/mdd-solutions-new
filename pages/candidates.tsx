@@ -44,7 +44,7 @@ export const Candidates: NextPage<StaticPageProps<typeof getStaticProps>> = ({ c
             </Head>
             <MainLayout contact={contact.results[0].data} logo={logo}>
                 <Header title={title} bgColor="bg-gradient-to-br from-yellow-500 to-yellow-600" />
-                <section className="relative py-32">
+                <section className="relative p-4 md:py-32">
                     <div
                         className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
                         style={{ height: '80px', transform: 'translateZ(0)' }}
@@ -53,12 +53,12 @@ export const Candidates: NextPage<StaticPageProps<typeof getStaticProps>> = ({ c
                     </div>
 
                     <div className="container max-w-7xl mx-auto px-4">
-                        <div className="grid grid-cols-2 gap-10">
-                            <div className="items-center flex flex-col text-xl leading-8 text-justify">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                            <div className="items-center flex flex-col text-xl leading-10 text-justify">
                                 <div className="text-gray-400 text-3xl py-5">
                                     <RichText render={summary} />
                                 </div>
-                                <div className="text-base leading-8">
+                                <div className="text-base leading-8 space-y-5">
                                     <RichText render={description} />
                                 </div>
                             </div>
@@ -68,7 +68,7 @@ export const Candidates: NextPage<StaticPageProps<typeof getStaticProps>> = ({ c
                         </div>
                     </div>
                 </section>
-                <section className="bg-gradient-to-br from-yellow-500 to-yellow-600 w-full p-20">
+                <section className="bg-gradient-to-br from-yellow-500 to-yellow-600 w-full p-10 md:p-20">
                     <div className="max-w-8xl mx-auto text-center py-8 text-3xl font-light uppercase tracking-wider">
                         <RichText render={typical_role_title} />
                     </div>
@@ -86,9 +86,9 @@ export const Candidates: NextPage<StaticPageProps<typeof getStaticProps>> = ({ c
                             </div>
                         ))}
                     </div>
-                    <div>
+                    <div className="w-full">
                         <Link href="/vacancies">
-                            <a className="bg-blue-800 flex items-center justify-center p-6 rounded-xl mx-auto w-80 text-white text-lg my-6 transition duration-150 hover:bg-blue-700 cursor-pointer uppercase">
+                            <a className="bg-blue-800 flex items-center justify-center p-6 rounded-xl mx-auto md:w-80 text-white text-lg my-6 transition duration-150 hover:bg-blue-700 cursor-pointer uppercase">
                                 See our vacancies
                                 <AiOutlineArrowRight size={25} className="ml-1 fill-current" />
                             </a>

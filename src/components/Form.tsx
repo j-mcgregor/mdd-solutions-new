@@ -5,11 +5,9 @@ interface FormProps {
     labelColor?: string
 }
 
-const Form: React.FC<FormProps> = ({ textColor = 'text-white', labelColor = 'text-gray-200' }) => {
+const Form: React.FC<FormProps> = ({ labelColor = 'text-gray-200' }) => {
     return (
-        <div className={`flex-auto p-5 lg:p-10 ${textColor}`}>
-            <h4 className="text-2xl font-semibold">Want to work with us?</h4>
-            <p className="leading-relaxed mt-1 mb-4">Complete this form and we will get back to you in 24 hours.</p>
+        <div>
             <div className="relative w-full mb-3 mt-8">
                 <label className={`block uppercase ${labelColor} text-xs font-bold mb-2`} htmlFor="full-name">
                     Full Name
@@ -34,6 +32,58 @@ const Form: React.FC<FormProps> = ({ textColor = 'text-white', labelColor = 'tex
                 />
             </div>
 
+            <div className="grid grid-cols-2 gap-10">
+                <div className="relative w-full mb-3">
+                    <label className={`block uppercase ${labelColor} text-xs font-bold mb-2`} htmlFor="email">
+                        City
+                    </label>
+                    <input
+                        type="email"
+                        className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm focus:outline-none focus:shadow-outline w-full"
+                        placeholder="City"
+                        style={{ transition: 'all .15s ease' }}
+                    />
+                </div>
+
+                <div className="relative w-full mb-3">
+                    <label className={`block uppercase ${labelColor} text-xs font-bold mb-2`} htmlFor="email">
+                        County
+                    </label>
+                    <input
+                        type="email"
+                        className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm focus:outline-none focus:shadow-outline w-full"
+                        placeholder="County"
+                        style={{ transition: 'all .15s ease' }}
+                    />
+                </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-10">
+                <div className="relative w-full mb-3">
+                    <label className={`block uppercase ${labelColor} text-xs font-bold mb-2`} htmlFor="email">
+                        Phone
+                    </label>
+                    <input
+                        type="email"
+                        className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm focus:outline-none focus:shadow-outline w-full"
+                        placeholder="Phone"
+                        style={{ transition: 'all .15s ease' }}
+                    />
+                </div>
+
+                <div className="relative w-full mb-3">
+                    <label className={`block uppercase ${labelColor} text-xs font-bold mb-2`} htmlFor="email">
+                        LinkedIn
+                    </label>
+                    <input
+                        type="email"
+                        className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm focus:outline-none focus:shadow-outline w-full"
+                        placeholder="LinkedIn"
+                        style={{ transition: 'all .15s ease' }}
+                    />
+                </div>
+            </div>
+
             <div className="relative w-full mb-3">
                 <label className={`block uppercase ${labelColor} text-xs font-bold mb-2`} htmlFor="message">
                     Message
@@ -47,7 +97,7 @@ const Form: React.FC<FormProps> = ({ textColor = 'text-white', labelColor = 'tex
             </div>
             <div className="text-center mt-6">
                 <button
-                    className="bg-yellow-400 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+                    className="bg-blue-800 hover:bg-yellow-500 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
                     type="button"
                     style={{ transition: 'all .15s ease' }}
                 >

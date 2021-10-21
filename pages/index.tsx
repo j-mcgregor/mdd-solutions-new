@@ -1,4 +1,3 @@
-import { faAward, faBookmark, faUpload, faUserFriends } from '@fortawesome/free-solid-svg-icons'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -8,9 +7,8 @@ import * as React from 'react'
 
 import { Client } from '../prismic-configuration'
 import { AnimateIn } from '../src/components/AnimateIn'
-import Form from '../src/components/Form'
 import InfoCard from '../src/components/InfoCard'
-import Polygon, { InversePolygon } from '../src/components/Polygon'
+import Polygon from '../src/components/Polygon'
 import MainLayout from '../src/MainLayout'
 import { StaticPageProps } from '../types'
 
@@ -33,19 +31,12 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
         title,
         description,
         background_image,
-        cta,
+
         sectors,
         sector_title,
         sector_subtitle,
     } = homepage?.results[0].data
     const { logo } = contact?.results[0].data
-
-    const servicesMap = {
-        candidate: { icon: faAward, color: 'bg-red-400', href: '/candidates' },
-        clients: { icon: faUserFriends, color: 'bg-blue-400', href: '/clients' },
-        vacancies: { icon: faBookmark, color: 'bg-green-400', href: '/vacancies' },
-        upload_cv: { icon: faUpload, color: 'bg-yellow-400', href: '/upload_cv' },
-    }
 
     const sectorsMap = {
         main_contracting: { href: '/candidates' },
@@ -104,7 +95,7 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
 
                     <section className="relative pt-16 pb-32 flex content-center items-center justify-center bg-blue-900">
                         <div className="container max-w-6xl relative mx-auto">
-                            <div className="mt-4 text-xl text-gray-300 leading-8 p-10 xl:p-1">
+                            <div className="mt-4 text-xl text-gray-300 leading-10 p-10 xl:p-1">
                                 <RichText render={description} />
                             </div>
                         </div>
@@ -141,7 +132,6 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                                         color="bg-white"
                                         description={<RichText render={c.sector_summary} />}
                                         icon={sectorsMap[c.id]?.icon}
-                                        // descriptionSize="small"
                                         uppercaseTitle
                                         titleClasses="text-gray-400 font-light"
                                     />

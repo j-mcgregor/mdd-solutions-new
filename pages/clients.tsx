@@ -6,6 +6,7 @@ import React from 'react'
 
 import { Client } from '../prismic-configuration'
 import Header from '../src/components/Header'
+import ImgCard from '../src/components/ImgCard'
 import Polygon from '../src/components/Polygon'
 import MainLayout from '../src/MainLayout'
 import { StaticPageProps } from '../types'
@@ -23,13 +24,13 @@ export async function getStaticProps() {
 }
 
 export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({ clients, contact }): JSX.Element => {
-    const { title, description } = clients.results[0].data
+    const { title, description, background_image } = clients.results[0].data
     const { logo } = contact.results[0].data
 
     return (
         <div>
             <Head>
-                <title>Contact | MDD Solutions</title>
+                <title>Clients | MDD Solutions</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <MainLayout contact={contact.results[0].data} logo={logo}>
@@ -42,9 +43,12 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({ clie
                         <Polygon fillColor="#fff" />
                     </div>
 
-                    <div className="container mx-auto px-4">
-                        <div className="items-center flex flex-wrap w-6/12 mx-auto text-xl leading-10 text-justify">
+                    <div className="container mx-auto max-w-7xl px-4 grid gap-10 grid-cols-1 xl:grid-cols-2">
+                        <div className="flex flex-col items-start justify-start flex-wrap mx-auto leading-7 md:leading-10 text-justify space-y-5">
                             <RichText render={description} />
+                        </div>
+                        <div className="flex flex-col items-start justify-start bg-white">
+                            <ImgCard img={background_image.url} />
                         </div>
                     </div>
                 </section>
