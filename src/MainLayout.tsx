@@ -13,11 +13,11 @@ interface MainLayoutProps {
 
 const MainLayout: NextPage<MainLayoutProps> = ({ contact, children, logo }) => {
     return (
-        <>
+        <div className="bg-gray-50">
             <Navbar logo={logo} />
             {children}
             <Footer {...contact} />
-        </>
+        </div>
     )
 }
 

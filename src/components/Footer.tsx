@@ -68,12 +68,19 @@ const Footer: NextPage<ContactDataProps> = ({ links, footnote }) => {
                                     COOKIE POLICY
                                 </a>
                             </li>
+                            <li className="mb-2 flex flex-row-reverse uppercase text-yellow-400 hover:text-yellow-500">
+                                <a
+                                    href="http://"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="p-1 text-xs text-right"
+                                >
+                                    {footnote && <RichText render={footnote} />}
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
-            </div>
-            <div className="footnote p-8 flex justify-center content-center uppercase bg-gray-900 text-yellow-400 text-xs">
-                {footnote && <RichText render={footnote} />}
             </div>
         </StyledFooter>
     )

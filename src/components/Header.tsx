@@ -12,9 +12,9 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ title, description, bgColor = 'bg-blue-900', overflow }) => {
     return (
         <div
-            className={`relative pt-16 pb-32 flex content-center items-center justify-center ${bgColor}`}
+            className={`relative pt-16 pb-10 flex content-center items-center justify-center ${bgColor}`}
             style={{
-                minHeight: '55vh',
+                minHeight: '30vh',
             }}
         >
             <div className="absolute top-0 w-full h-full bg-center bg-contain bg-no-repeat">

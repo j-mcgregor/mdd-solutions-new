@@ -5,18 +5,20 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Prismic from 'prismic-javascript'
 import { RichText } from 'prismic-reactjs'
-import * as React from 'react'
+import React, { useEffect, useState } from 'react'
+import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 
 import { Client } from '../prismic-configuration'
 import Header from '../src/components/Header'
-import ImgCard from '../src/components/ImgCard'
 import Polygon from '../src/components/Polygon'
 import MainLayout from '../src/MainLayout'
 import { StaticPageProps } from '../types'
 
 export async function getStaticProps() {
     const vacancies = await Client().query(Prismic.Predicates.at('document.type', 'vacancies'))
-    const roles = await Client().query(Prismic.Predicates.at('document.type', 'role'))
+    const roles = await Client().query(Prismic.Predicates.at('document.type', 'role'), {
+        orderings: '[document.last_publication_date desc]',
+    })
     const contact = await Client().query(Prismic.Predicates.at('document.type', 'contact'))
 
     return {
@@ -33,17 +35,33 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({
     contact,
     roles,
 }): JSX.Element => {
+    const [showNum, setShowNum] = useState(5)
+    const [results, setResults] = useState([])
+    const [loading, setLoading] = useState(false)
+
+    useEffect(() => {
+        setResults(roles.results.slice(0, showNum))
+    }, [roles, showNum])
+
     const { title } = vacancies.results[0].data
     const { logo } = contact.results[0].data
 
-    const vacancyList = roles.results?.map((v, i) => {
+    const handleShowMore = () => {
+        setLoading(true)
+        setTimeout(() => {
+            setShowNum(showNum + 5)
+            setLoading(false)
+        }, 500)
+    }
+
+    const vacancyList = results?.map((v, i) => {
         const borderColor = i % 2 === 0 ? 'border-blue-400' : 'border-yellow-400'
         const buttonColor = i % 2 === 0 ? 'bg-blue-400 hover:bg-blue-300' : 'bg-yellow-400 hover:bg-yellow-300'
         return (
             <div
                 key={i}
                 className={classNames(
-                    'bg-white shadow overflow-hidden sm:rounded-lg mb-8 border-2 grid grid-cols-1 md:grid-cols-4 p-4 md:p-0',
+                    'bg-gray-100 overflow-hidden sm:rounded-lg mb-8 border-2 grid grid-cols-1 md:grid-cols-4 p-4 md:p-0 shadow-md',
                     borderColor
                 )}
             >
@@ -63,7 +81,7 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({
                 </div>
                 <div className="flex flex-col items-center justify-center">
                     <Link href={`/vacancies/${v.id}`}>
-                        <a className={classNames(buttonColor, 'px-4 py-3 rounded-md text-white')}>Apply now</a>
+                        <a className={classNames(buttonColor, 'px-4 py-3 rounded-md text-white')}>See more</a>
                     </Link>
                 </div>
             </div>
@@ -77,13 +95,13 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <MainLayout contact={contact.results[0].data} logo={logo} invertNavLinks>
-                <Header title={title} bgColor="bg-gradient-to-br from-yellow-500 to-yellow-300" />
+                <Header title={title} bgColor="bg-gradient-to-br from-yellow-500 to-yellow-600" />
                 <section className="relative py-10">
                     <div
                         className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
                         style={{ height: '80px', transform: 'translateZ(0)' }}
                     >
-                        <Polygon fillColor="#fff" />
+                        <Polygon fillColor="#F9FAFB" />
                     </div>
                 </section>
                 {vacancyList.length && (
@@ -94,6 +112,21 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({
                         </div>
                     </section>
                 )}
+                <div className=" container w-full mx-auto my-10">
+                    <button
+                        className="mx-auto bg-blue-800 w-40 text-center text-gray-50 py-4 rounded-lg hover:bg-yellow-500 duration-150 cursor-pointer block"
+                        onClick={handleShowMore}
+                        disabled={loading}
+                    >
+                        {loading ? (
+                            <div className="flex items-center justify-center">
+                                <AiOutlineLoading3Quarters size={20} className="animate-spin" />
+                            </div>
+                        ) : (
+                            'Show Next 5'
+                        )}
+                    </button>
+                </div>
             </MainLayout>
         </div>
     )

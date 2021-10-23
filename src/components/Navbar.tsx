@@ -21,18 +21,22 @@ const StyledLink = styled.a`
 `
 
 const SWITCH_NAV_HEIGHT = {
-    xl: -803,
+    index: -803,
+    other: -280,
 }
 
 const Navbar: NextPage<NavbarProps> = ({ logo }) => {
     const [transparent, setTransparent] = useState(true)
+    const [otherTransparent, setOtherTransparent] = useState(true)
 
     useScrollPosition(
         ({ currPos }) => {
-            const isShow = currPos.y > SWITCH_NAV_HEIGHT.xl
-            setTransparent(isShow)
+            const isIndexShow = currPos.y > SWITCH_NAV_HEIGHT.index
+            const isOtherShow = currPos.y > SWITCH_NAV_HEIGHT.other
+            setTransparent(isIndexShow)
+            setOtherTransparent(isOtherShow)
         },
-        [transparent]
+        [transparent, otherTransparent]
     )
 
     const router = useRouter()
@@ -44,8 +48,9 @@ const Navbar: NextPage<NavbarProps> = ({ logo }) => {
 
     const bgColorMap = {
         '/': transparent ? 'bg-transparent' : 'bg-blue-900',
-        '/candidates': 'bg-yellow-500',
-        '/vacancies': 'bg-yellow-400',
+        '/candidates': otherTransparent ? 'bg-transparent' : 'bg-yellow-500',
+        '/vacancies': otherTransparent ? 'bg-transparent' : 'bg-yellow-500',
+        '/contact': otherTransparent ? 'bg-transparent' : 'bg-blue-800',
     }
 
     const linkTabClasses = (invert?: boolean) => ({

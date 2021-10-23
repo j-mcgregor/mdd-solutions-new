@@ -4,6 +4,8 @@ import Prismic from 'prismic-javascript'
 import * as React from 'react'
 
 import { FaEnvelopeOpen, FaPhone } from 'react-icons/fa'
+import { AiFillHome, AiOutlineInfoCircle } from 'react-icons/ai'
+import { RiCellphoneFill, RiLinkedinBoxFill } from 'react-icons/ri'
 import { Client } from '../prismic-configuration'
 import Form from '../src/components/Form'
 import Header from '../src/components/Header'
@@ -41,21 +43,24 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({ cont
                         className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
                         style={{ height: '80px', transform: 'translateZ(0)' }}
                     >
-                        <Polygon fillColor="#fff" />
+                        <Polygon fillColor="#F9FAFB" />
                     </div>
 
                     <div className="container mx-auto max-w-7xl px-4">
-                        <div className={`grid xl:grid-cols-2 grid-cols-1 p-5 lg:p-10 gap-8 md:gap-16 text-white`}>
+                        <div className={`grid xl:grid-cols-2 grid-cols-1 p-5 lg:p-10 gap-8 md:gap-16`}>
                             <div className="flex items-start flex-col justify-center text-blue-700 shadow-lg rounded-3xl bg-gradient-to-tl from-yellow-400 to-yellow-500 px-4 py-10 md:px-20">
-                                <h4 className="text-xl md:text-4xl font-semibold uppercase">Get in touch with us</h4>
-                                <p className="leading-relaxed my-4 text-lg">
+                                <h4 className="text-xl md:text-2xl font-semibold uppercase">Get in touch with us</h4>
+                                <p className="my-1 text-base">
                                     Complete this form and we will get back to you in 24 hours.
                                 </p>
+                                <Form labelColor="text-blue-800" />
+                            </div>
+                            <div className="flex items-start flex-col px-4 py-10 ">
                                 <div className="space-y-5">
                                     <div className="flex items-center justify-start">
-                                        <FaEnvelopeOpen size={20} />{' '}
+                                        <AiFillHome size={20} />{' '}
                                         <a className="ml-5 hover:text-gray-900" href={mail.source.url}>
-                                            {mail.source.url.replace('mailto:', '')}
+                                            Address
                                         </a>
                                     </div>
                                     <div className="flex items-center justify-start">
@@ -64,9 +69,26 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({ cont
                                             {phone.source.url.replace('tel:', '')}
                                         </a>
                                     </div>
+                                    <div className="flex items-center justify-start">
+                                        <RiCellphoneFill size={20} />{' '}
+                                        <a className="ml-5 hover:text-gray-900" href={phone.source.url}>
+                                            {phone.source.url.replace('tel:', '')}
+                                        </a>
+                                    </div>
+                                    <div className="flex items-center justify-start">
+                                        <AiOutlineInfoCircle size={20} />{' '}
+                                        <a className="ml-5 hover:text-gray-900" href={mail.source.url}>
+                                            {mail.source.url.replace('mailto:', '')}
+                                        </a>
+                                    </div>
+                                    <div className="flex items-center justify-start">
+                                        <RiLinkedinBoxFill size={20} />{' '}
+                                        <a className="ml-5 hover:text-gray-900" href={mail.source.url}>
+                                            {mail.source.url.replace('mailto:', '')}
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                            <Form labelColor="text-blue-800" />
                         </div>
                     </div>
                 </section>
