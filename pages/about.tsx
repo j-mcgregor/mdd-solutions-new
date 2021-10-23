@@ -1,19 +1,16 @@
+import { Disclosure, Transition } from '@headlessui/react'
+import classNames from 'classnames'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import Prismic from 'prismic-javascript'
 import { RichText } from 'prismic-reactjs'
 import * as React from 'react'
-import { Disclosure, Transition } from '@headlessui/react'
 import { BsChevronDown, BsChevronUp } from 'react-icons/bs'
 
 import { Client } from '../prismic-configuration'
-import ImgCard from '../src/components/ImgCard'
-import ListInfoCard from '../src/components/ListInfoCard'
+import { AnimateIn } from '../src/components/AnimateIn'
 import MainLayout from '../src/MainLayout'
 import { StaticPageProps } from '../types'
-import classNames from 'classnames'
-import { AnimateIn } from '../src/components/AnimateIn'
-import Polygon from '../src/components/Polygon'
 
 export async function getStaticProps() {
     const about = await Client().query(Prismic.Predicates.at('document.type', 'about'))

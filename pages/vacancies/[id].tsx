@@ -1,7 +1,6 @@
 import moment from 'moment'
 import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
 import Prismic from 'prismic-javascript'
 import { RichText } from 'prismic-reactjs'
 import React from 'react'
@@ -9,9 +8,9 @@ import React from 'react'
 import { Client } from '../../prismic-configuration'
 import Header from '../../src/components/Header'
 import Polygon from '../../src/components/Polygon'
+import { htmlSerializer } from '../../src/lib/htmlSerializer'
 import MainLayout from '../../src/MainLayout'
 import { StaticPageProps } from '../../types'
-import { htmlSerializer } from '../../src/lib/htmlSerializer'
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     const role = await Client().query(Prismic.Predicates.at('document.id', params.id))

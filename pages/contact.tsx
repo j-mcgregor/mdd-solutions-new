@@ -2,10 +2,10 @@ import { NextPage } from 'next'
 import Head from 'next/head'
 import Prismic from 'prismic-javascript'
 import * as React from 'react'
-
-import { FaEnvelopeOpen, FaPhone } from 'react-icons/fa'
 import { AiFillHome, AiOutlineInfoCircle } from 'react-icons/ai'
+import { FaPhone } from 'react-icons/fa'
 import { RiCellphoneFill, RiLinkedinBoxFill } from 'react-icons/ri'
+
 import { Client } from '../prismic-configuration'
 import Form from '../src/components/Form'
 import Header from '../src/components/Header'
