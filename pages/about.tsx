@@ -35,12 +35,7 @@ export const About: NextPage<StaticPageProps<typeof getStaticProps>> = ({ about,
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <MainLayout contact={contact.results[0].data} logo={logo}>
-                <section
-                    className="relative py-32 flex content-center items-center justify-center"
-                    // style={{
-                    //     minHeight: '45vh',
-                    // }}
-                >
+                <section className="relative py-32 flex content-center items-center justify-center">
                     <div
                         className="absolute top-0 w-full h-full bg-center bg-cover bg-fixed"
                         style={{
@@ -76,7 +71,7 @@ export const About: NextPage<StaticPageProps<typeof getStaticProps>> = ({ about,
                                         <>
                                             <Disclosure.Button
                                                 className={classNames(
-                                                    'flex justify-between w-full px-4 py-5 text-xl text-left text-gray-100 bg-blue-900 hover:bg-yellow-500 font-light tracking-wider focus:outline-none',
+                                                    'flex justify-between w-full px-4 py-5 text-xl text-left text-primary-yellow bg-primary-blue hover:bg-primary-yellow hover:text-primary-blue duration-100 font-light tracking-wider focus:outline-none',
                                                     {
                                                         'rounded-t-xl': i === 0,
                                                         'rounded-b-xl': i === list_items.length - 1,

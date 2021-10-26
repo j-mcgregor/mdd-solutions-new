@@ -56,7 +56,7 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({
 
     const vacancyList = results?.map((v, i) => {
         const borderColor = i % 2 === 0 ? 'border-blue-400' : 'border-yellow-400'
-        const buttonColor = i % 2 === 0 ? 'bg-blue-400 hover:bg-blue-300' : 'bg-yellow-400 hover:bg-yellow-300'
+
         return (
             <div
                 key={i}
@@ -66,7 +66,7 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({
                 )}
             >
                 <div className="px-4 py-5 sm:px-6 col-span-3">
-                    <div className="text-lg leading-6 font-medium text-blue-900 pb-3 uppercase tracking-wider">
+                    <div className="text-lg leading-6 font-medium text-dark pb-3 uppercase tracking-wider">
                         {RichText.render(v.data.title)}
                     </div>
                     <p className="mt-1 max-w-2xl text-sm text-gray-500 pb-8">{RichText.render(v.data.summary)}</p>
@@ -81,7 +81,7 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({
                 </div>
                 <div className="flex flex-col items-center justify-center">
                     <Link href={`/vacancies/${v.id}`}>
-                        <a className={classNames(buttonColor, 'px-4 py-3 rounded-md text-white')}>See more</a>
+                        <a className="bg-accent px-4 py-3 rounded-md text-light">See more</a>
                     </Link>
                 </div>
             </div>
@@ -95,13 +95,13 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <MainLayout contact={contact.results[0].data} logo={logo} invertNavLinks>
-                <Header title={title} bgColor="bg-gradient-to-br from-yellow-500 to-yellow-600" />
+                <Header title={title} bgColor="bg-gradient-to-br from-primary-yellow to-secondary-yellow" />
                 <section className="relative py-10">
                     <div
                         className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
                         style={{ height: '80px', transform: 'translateZ(0)' }}
                     >
-                        <Polygon fillColor="#F9FAFB" />
+                        <Polygon fillColor="#eeeeee" />
                     </div>
                 </section>
                 {vacancyList.length && (
@@ -114,7 +114,7 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({
                 )}
                 <div className=" container w-full mx-auto my-10">
                     <button
-                        className="mx-auto bg-blue-800 w-40 text-center text-gray-50 py-4 rounded-lg hover:bg-yellow-500 duration-150 cursor-pointer block"
+                        className="mx-auto bg-secondary-blue w-40 text-center text-gray-50 py-4 rounded-lg hover:bg-primary-yellow duration-150 cursor-pointer block"
                         onClick={handleShowMore}
                         disabled={loading}
                     >

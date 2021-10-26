@@ -2,6 +2,15 @@ module.exports = {
     purge: ['./src/components/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}'],
     darkMode: false, // or 'media' or 'class'
     theme: {
+        // colors: {
+        //     'primary-blue': '#143959',
+        //     'secondary-blue': '#226096',
+        //     'primary-yellow': '#f4b41a',
+        //     'secondary-yellow': '#f8cb63',
+        //     accent: '#76c086',
+        //     light: '#eeeeee',
+        //     dark: '#333333',
+        // },
         extend: {
             colors: {
                 blue: {
@@ -15,6 +24,13 @@ module.exports = {
                     800: '#13334e',
                     900: '#0b1e2f',
                 },
+                'primary-blue': '#143959',
+                'secondary-blue': '#226096',
+                'primary-yellow': '#f4b41a',
+                'secondary-yellow': '#f8cb63',
+                accent: '#76c086',
+                light: '#eeeeee',
+                dark: '#333333',
             },
             gridTemplateRows: {
                 layout: 'auto auto',

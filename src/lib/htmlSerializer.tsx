@@ -8,7 +8,7 @@ export const htmlSerializer = function (type, element, content, children, key) {
         case Elements.heading1:
             return <h1 className="text-2xl">{children}</h1>
         case Elements.heading4:
-            return <h4 className="font-bold">{children}</h4>
+            return <h4 className="font-bold text-primary-yellow text-3xl py-2">{children}</h4>
         case Elements.list:
             return <ul className="list-disc pl-5">{children}</ul>
 

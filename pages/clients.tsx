@@ -29,7 +29,13 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({ clie
     const { title, description, background_image, section: sections } = clients.results[0].data
     const { logo } = contact.results[0].data
 
-    const bgColors = ['bg-blue-800 text-gray-50', '', 'bg-blue-900 text-gray-50', '', 'bg-yellow-500 text-gray-800']
+    const bgColors = [
+        'bg-primary-blue text-gray-50',
+        '',
+        'bg-primary-yellow text-gray-800',
+        '',
+        'bg-secondary-blue text-gray-50',
+    ]
     return (
         <div>
             <Head>
@@ -37,13 +43,13 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({ clie
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <MainLayout contact={contact.results[0].data} logo={logo}>
-                <Header title={title} bgColor="bg-blue-900" />
+                <Header title={title} bgColor="bg-primary-blue" />
                 <section className="relative py-32">
                     <div
                         className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
                         style={{ height: '80px', transform: 'translateZ(0)' }}
                     >
-                        <Polygon fillColor="#F9FAFB" />
+                        <Polygon fillColor="#eeeeee" />
                     </div>
 
                     <div className="container mx-auto max-w-7xl px-4 grid gap-10 grid-cols-1 xl:grid-cols-2">

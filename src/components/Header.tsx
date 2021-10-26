@@ -14,7 +14,7 @@ const Header: React.FC<HeaderProps> = ({ title, description, bgColor = 'bg-blue-
         <div
             className={`relative pt-16 pb-10 flex content-center items-center justify-center ${bgColor}`}
             style={{
-                minHeight: '30vh',
+                minHeight: '35vh',
             }}
         >
             <div className="absolute top-0 w-full h-full bg-center bg-contain bg-no-repeat">
@@ -24,7 +24,7 @@ const Header: React.FC<HeaderProps> = ({ title, description, bgColor = 'bg-blue-
                 <div className="items-center flex flex-wrap">
                     <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                         <div className="pr-12">
-                            <h1 className="text-white text-3xl md:text-6xl py-5 uppercase font-extralight tracking-widest">
+                            <h1 className="text-white text-xl md:text-5xl py-5 uppercase font-extralight tracking-widest">
                                 {RichText.render(title)}
                             </h1>
                             <p className="mt-4 text-lg text-gray-300 text-justify">

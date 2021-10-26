@@ -43,13 +43,13 @@ export const Candidates: NextPage<StaticPageProps<typeof getStaticProps>> = ({ c
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <MainLayout contact={contact.results[0].data} logo={logo}>
-                <Header title={title} bgColor="bg-gradient-to-br from-yellow-500 to-yellow-600" />
+                <Header title={title} bgColor="bg-gradient-to-br from-primary-yellow to-secondary-yellow" />
                 <section className="relative p-4 md:py-32">
                     <div
                         className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
                         style={{ height: '80px', transform: 'translateZ(0)' }}
                     >
-                        <Polygon fillColor="#F9FAFB" />
+                        <Polygon fillColor="#eeeeee" />
                     </div>
 
                     <div className="container max-w-7xl mx-auto px-4">
@@ -68,7 +68,7 @@ export const Candidates: NextPage<StaticPageProps<typeof getStaticProps>> = ({ c
                         </div>
                     </div>
                 </section>
-                <section className="bg-gradient-to-br from-yellow-500 to-yellow-600 w-full p-10 md:p-20">
+                <section className="bg-gradient-to-br from-primary-yellow to-secondary-yellow w-full p-10 md:p-20">
                     <div className="max-w-8xl mx-auto text-center py-8 text-3xl font-light uppercase tracking-wider">
                         <RichText render={typical_role_title} />
                     </div>
@@ -76,7 +76,7 @@ export const Candidates: NextPage<StaticPageProps<typeof getStaticProps>> = ({ c
                         className={`font-light max-w-8xl mx-auto grid gap-10 grid-cols-1 md:grid-cols-3 xl:grid-cols-${typical_roles.length}`}
                     >
                         {typical_roles.map((role, i) => (
-                            <div key={i} className="p-8 text-lg rounded-xl bg-blue-900 text-white shadow-xl">
+                            <div key={i} className="px-4 py-3 text-lg rounded-xl bg-blue-900 text-white shadow-xl">
                                 <div className="text-xl py-3 uppercase tracking-wider border-b-2 border-blue-700">
                                     <RichText render={role.title1} />
                                 </div>
@@ -86,9 +86,9 @@ export const Candidates: NextPage<StaticPageProps<typeof getStaticProps>> = ({ c
                             </div>
                         ))}
                     </div>
-                    <div className="w-full">
+                    <div className="w-full mt-10">
                         <Link href="/vacancies">
-                            <a className="bg-blue-800 flex items-center justify-center p-6 rounded-xl mx-auto md:w-80 text-white text-lg my-6 transition duration-150 hover:bg-blue-700 cursor-pointer uppercase">
+                            <a className="bg-primary-blue flex items-center justify-center p-6 rounded-xl mx-auto md:w-80 text-white text-lg my-6 transition duration-150 hover:bg-secondary-blue cursor-pointer uppercase">
                                 See our vacancies
                                 <AiOutlineArrowRight size={25} className="ml-1 fill-current" />
                             </a>

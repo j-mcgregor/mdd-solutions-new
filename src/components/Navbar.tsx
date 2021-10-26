@@ -43,55 +43,58 @@ const Navbar: NextPage<NavbarProps> = ({ logo }) => {
 
     const textColorMap = {
         '/candidates': 'text-blue-900',
-        '/vacancies': 'text-blue-900 hover:text-white',
+        '/vacancies': 'text-blue-900 hover:text-light',
     }
 
     const bgColorMap = {
         '/': transparent ? 'bg-transparent' : 'bg-blue-900',
-        '/candidates': otherTransparent ? 'bg-transparent' : 'bg-yellow-500',
-        '/vacancies': otherTransparent ? 'bg-transparent' : 'bg-yellow-500',
+        '/about': transparent ? 'bg-transparent' : 'bg-primary-blue',
+        '/candidates': otherTransparent ? 'bg-transparent' : 'bg-primary-yellow',
+        '/clients': otherTransparent ? 'bg-transparent' : 'bg-primary-blue',
         '/contact': otherTransparent ? 'bg-transparent' : 'bg-blue-800',
+        '/vacancies': otherTransparent ? 'bg-transparent' : 'bg-primary-yellow',
+        '/vacancies/[id]': otherTransparent ? 'bg-transparent' : 'bg-primary-blue',
     }
 
     const linkTabClasses = (invert?: boolean) => ({
         active: `${
-            invert ? 'text-gray-100' : textColorMap[router.asPath] ?? 'text-yellow-400'
+            invert ? 'text-gray-100' : textColorMap[router.pathname] ?? 'text-secondary-yellow'
         } px-5 uppercase text-sm font-light tracking-wider cursor-pointer`,
         default: `${
-            invert ? 'text-gray-500' : textColorMap[router.asPath] ?? 'text-white'
+            invert ? 'text-gray-500' : textColorMap[router.pathname] ?? 'text-light'
         } hover:text-gray-400 px-5 uppercase text-sm font-light tracking-wider cursor-pointer`,
     })
 
     const navLinks = [
         {
             href: '/about',
-            isActive: router.asPath === '/about',
+            isActive: router.pathname === '/about',
             label: 'About',
         },
         {
             href: '/candidates',
-            isActive: router.asPath === '/candidates',
+            isActive: router.pathname === '/candidates',
             label: 'Candidates',
         },
         {
             href: '/clients',
-            isActive: router.asPath === '/clients',
+            isActive: router.pathname === '/clients',
             label: 'Clients',
         },
         {
             href: '/vacancies',
-            isActive: router.asPath === '/vacancies',
+            isActive: router.pathname === '/vacancies',
             label: 'Vacancies',
         },
         {
             href: '/contact',
-            isActive: router.asPath === '/contact',
+            isActive: router.pathname === '/contact',
             label: 'Contact',
         },
     ]
 
     return (
-        <nav className={classNames('fixed z-50 w-full', bgColorMap[router.asPath] ?? 'bg-blue-900')}>
+        <nav className={classNames('fixed z-50 w-full', bgColorMap[router.pathname] ?? 'bg-blue-900')}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="h-16">
                     <div className="flex flex-row h-full content-center justify-between">
@@ -109,7 +112,7 @@ const Navbar: NextPage<NavbarProps> = ({ logo }) => {
                                             className={
                                                 nav.isActive
                                                     ? linkTabClasses(
-                                                          ['/candidates', '/vacancies'].includes(router.asPath)
+                                                          ['/candidates', '/vacancies'].includes(router.pathname)
                                                       ).active
                                                     : linkTabClasses().default
                                             }

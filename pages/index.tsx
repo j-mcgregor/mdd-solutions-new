@@ -78,10 +78,10 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                                         <AnimateIn
                                             animateIn
                                             triggerOnce
-                                            className="text-white font-semibold py-10 text-left"
+                                            className="text-light font-semibold py-10 text-left"
                                         >
                                             <div className="text-8xl">
-                                                <div className="text-yellow-400">MDD</div>
+                                                <div className="text-primary-yellow">MDD</div>
                                                 <div className="font-light tracking-wide">Solutions</div>
                                             </div>
                                             <div className="text-xl mt-4 tracking-widest font-light">
@@ -102,7 +102,7 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                     {/* ============== DESC 1 ============== */}
                     <section className="relative pt-32 pb-48 flex content-center items-center justify-center bg-blue-900">
                         <div className="container max-w-6xl relative mx-auto">
-                            <div className="grid grid-cols-3 mt-4 text-xl text-gray-300 leading-10 p-10 xl:p-1">
+                            <div className="grid grid-cols-3 mt-4 text-xl text-light leading-10 p-10 xl:p-1">
                                 <div className="col-span-2 text-justify">
                                     <RichText render={description_1} htmlSerializer={htmlSerializer} />
                                 </div>
@@ -112,23 +112,17 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                             className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
                             style={{ height: '70px', transform: 'translateZ(0)  scale(-1, 1)' }}
                         >
-                            <Polygon fillColor="#13334e" />
+                            <Polygon fillColor="#226096" />
                         </div>
                     </section>
                     {/* ============== DESC 2 ============== */}
-                    <section className="relative pt-32 pb-48 flex content-center items-center justify-center bg-blue-800">
+                    <section className="relative pt-32 pb-48 flex content-center items-center justify-center bg-secondary-blue">
                         <div className="container max-w-6xl relative mx-auto">
-                            <div className="grid grid-cols-3 mt-4 text-xl text-gray-300 leading-10 p-10 xl:p-1">
+                            <div className="grid grid-cols-3 mt-4 text-xl text-light leading-10 p-10 xl:p-1">
                                 <div className="col-span-2 col-start-2 text-justify">
                                     <RichText render={description_2} htmlSerializer={htmlSerializer} />
                                 </div>
                             </div>
-                        </div>
-                        <div
-                            className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
-                            style={{ height: '70px', transform: 'translateZ(0)' }}
-                        >
-                            <Polygon fillColor="#0b1e2f" />
                         </div>
                     </section>
                     {/* ============== SECTORS ============== */}
@@ -141,7 +135,7 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                         </div>
 
                         <div className="container mx-auto max-w-7xl px-4 text-center">
-                            <h2 className="text-5xl pb-5 uppercase font-light">
+                            <h2 className="text-5xl pb-5 uppercase font-light text-primary-yellow">
                                 <RichText render={sector_title} />
                             </h2>
                             {sector_subtitle && (
@@ -159,7 +153,7 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                                             )}
                                             key={i}
                                         >
-                                            <div className="text-2xl uppercase">
+                                            <div className="text-2xl uppercase text-primary-yellow">
                                                 <RichText render={sector.sector_title} />
                                             </div>
                                             <div className="">
