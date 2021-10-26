@@ -42,7 +42,7 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({ cont
             </Head>
             <MainLayout contact={contact.results[0].data} logo={logo}>
                 <Header title={title} bgColor="bg-gradient-to-tl from-blue-800 to-blue-900" />
-                <section className="relative py-20">
+                <section className="relative py-20 bg-light">
                     <div
                         className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
                         style={{ height: '80px', transform: 'translateZ(0)' }}

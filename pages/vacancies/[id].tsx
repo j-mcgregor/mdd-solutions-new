@@ -37,7 +37,7 @@ const VacancyShow: NextPage<StaticPageProps<typeof getServerSideProps>> = ({ con
                 {role.title && (
                     <Header title={role.title} bgColor="bg-gradient-to-br from-primary-blue to-secondary-blue" />
                 )}
-                <section className="relative py-12 px-4">
+                <section className="relative py-12 px-4 bg-light">
                     <div
                         className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
                         style={{ height: '80px', transform: 'translateZ(0)' }}
@@ -80,14 +80,7 @@ const VacancyShow: NextPage<StaticPageProps<typeof getServerSideProps>> = ({ con
                         </div>
                     </div>
                 </section>
-                <section className="relative py-12 px-4">
-                    <div
-                        className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
-                        style={{ height: '80px', transform: 'translateZ(0)' }}
-                    >
-                        <Polygon fillColor="#eeeeee" />
-                    </div>
-
+                <section className="relative py-12 px-4 bg-light">
                     <div className="max-w-6xl mx-auto mb-3">
                         {role.first_uploaded && (
                             <p className="mt-1 text-xs text-gray-500">

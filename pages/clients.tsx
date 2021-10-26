@@ -44,7 +44,7 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({ clie
             </Head>
             <MainLayout contact={contact.results[0].data} logo={logo}>
                 <Header title={title} bgColor="bg-primary-blue" />
-                <section className="relative py-32">
+                <section className="relative py-32 bg-light">
                     <div
                         className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
                         style={{ height: '80px', transform: 'translateZ(0)' }}

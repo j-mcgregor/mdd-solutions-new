@@ -52,7 +52,7 @@ export const Candidates: NextPage<StaticPageProps<typeof getStaticProps>> = ({ c
                         <Polygon fillColor="#eeeeee" />
                     </div>
 
-                    <div className="container max-w-7xl mx-auto px-4">
+                    <div className="container max-w-7xl mx-auto px-4 bg-light">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                             <div className="items-center flex flex-col text-xl leading-10 text-justify">
                                 <div className="text-gray-400 text-3xl py-5">

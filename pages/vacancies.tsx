@@ -96,7 +96,7 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({
             </Head>
             <MainLayout contact={contact.results[0].data} logo={logo} invertNavLinks>
                 <Header title={title} bgColor="bg-gradient-to-br from-primary-yellow to-secondary-yellow" />
-                <section className="relative py-10">
+                <section className="relative py-10 bg-light">
                     <div
                         className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
                         style={{ height: '80px', transform: 'translateZ(0)' }}
@@ -105,14 +105,14 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({
                     </div>
                 </section>
                 {vacancyList.length && (
-                    <section className="relative">
+                    <section className="relative bg-light">
                         <div className="container mx-auto max-w-5xl px-4">
                             <div className="text-gray-600 text-xl tracking-widest mb-4 uppercase">Current openings</div>
                             {vacancyList}
                         </div>
                     </section>
                 )}
-                <div className=" container w-full mx-auto my-10">
+                <div className="container w-full mx-auto my-10 bg-light">
                     <button
                         className="mx-auto bg-secondary-blue w-40 text-center text-gray-50 py-4 rounded-lg hover:bg-primary-yellow duration-150 cursor-pointer block"
                         onClick={handleShowMore}
