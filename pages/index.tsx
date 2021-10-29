@@ -72,21 +72,10 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                             <span id="blackOverlay" className="w-full h-full absolute opacity-75 bg-blue-900"></span>
                         </div>
                         <div className="container relative mx-auto">
-                            <div className="items-start flex flex-wrap">
-                                <div className="w-full lg:w-6/12 px-4 text-center">
-                                    <div className="pr-12">
-                                        <AnimateIn animateIn triggerOnce className="text-light py-10 text-left">
-                                            {/* <div className="text-8xl">
-                                                <div className="text-primary-yellow">MDD</div>
-                                                <div className="font-light tracking-wide">Solutions</div>
-                                            </div>
-                                            <div className="text-xl mt-4 tracking-widest font-light">
-                                                Lorem ipsum dolor sit amet
-                                            </div> */}
-                                            <img src="/images/logo-transparent.png" alt="" />
-                                        </AnimateIn>
-                                    </div>
-                                </div>
+                            <div className="flex items-center justify-center">
+                                <AnimateIn animateIn triggerOnce className="text-light py-10 ">
+                                    <img src="/images/logo-transparent.png" alt="" />
+                                </AnimateIn>
                             </div>
                         </div>
                         <div
@@ -97,9 +86,9 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                         </div>
                     </section>
                     {/* ============== DESC 1 ============== */}
-                    <section className="relative pt-32 pb-48 flex content-center items-center justify-center bg-blue-900">
+                    <section className="relative pt-20 pb-32 flex content-center items-center justify-center bg-blue-900">
                         <div className="container max-w-6xl relative mx-auto">
-                            <div className="grid grid-cols-3 mt-4 text-xl text-light leading-8 p-10 xl:p-1">
+                            <div className="grid grid-cols-3 text-xl text-light leading-8 p-10 xl:p-1">
                                 <div className="col-span-2 text-justify text-xl leading-8">
                                     <RichText render={description_1} htmlSerializer={htmlSerializer} />
                                 </div>
@@ -113,9 +102,9 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                         </div>
                     </section>
                     {/* ============== DESC 2 ============== */}
-                    <section className="relative pt-32 pb-48 flex content-center items-center justify-center bg-light">
+                    <section className="relative pt-20 pb-32 flex content-center items-center justify-center bg-light">
                         <div className="container max-w-6xl relative mx-auto">
-                            <div className="grid grid-cols-3 mt-4 text-xl text-dark p-10 xl:p-1">
+                            <div className="grid grid-cols-3 text-xl text-dark p-10 xl:p-1">
                                 <div className="col-span-2 col-start-2 text-justify text-xl leading-8 ">
                                     <RichText render={description_2} htmlSerializer={htmlSerializer} />
                                 </div>
@@ -123,7 +112,7 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                         </div>
                     </section>
                     {/* ============== SECTORS ============== */}
-                    <section className="relative py-32 bg-primary-blue text-gray-50 pb-56">
+                    <section className="relative pt-20 pb-12 bg-primary-blue text-gray-50">
                         <div
                             className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
                             style={{ height: '80px', transform: 'translateZ(0)' }}
@@ -132,7 +121,7 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                         </div>
 
                         <div className="container mx-auto max-w-7xl px-4 text-center">
-                            <h2 className="text-5xl pb-5 uppercase font-light text-primary-yellow">
+                            <h2 className="text-4xl pb-5 uppercase font-light text-primary-yellow">
                                 <RichText render={sector_title} />
                             </h2>
                             {sector_subtitle && (
@@ -145,7 +134,7 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                                     return (
                                         <div
                                             className={classNames(
-                                                'px-32 h-96 flex items-center justify-center flex-col space-y-5 border-gray-50 ',
+                                                'px-20 py-16 flex items-center justify-center flex-col space-y-5 border-gray-50 ',
                                                 sectorsMap[i].classes
                                             )}
                                             key={i}
@@ -153,7 +142,7 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                                             <div className="text-2xl uppercase text-primary-yellow">
                                                 <RichText render={sector.sector_title} />
                                             </div>
-                                            <div className="">
+                                            <div className="text-xl">
                                                 <RichText render={sector.sector_summary} />
                                             </div>
                                         </div>

@@ -54,7 +54,7 @@ export const Candidates: NextPage<StaticPageProps<typeof getStaticProps>> = ({ c
 
                     <div className="container max-w-7xl mx-auto px-4 bg-light">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                            <div className="items-center flex flex-col text-xl leading-8 text-justify">
+                            <div className="flex items-center justify-center flex-col text-xl leading-8 text-justify">
                                 <div className="text-gray-400 text-2xl py-5">
                                     <RichText render={summary} />
                                 </div>
@@ -62,7 +62,7 @@ export const Candidates: NextPage<StaticPageProps<typeof getStaticProps>> = ({ c
                                     <RichText render={description} />
                                 </div>
                             </div>
-                            <div className="items-start flex flex-row text-base leading-8 text-start pt-8">
+                            <div className="flex flex-col items-center justify-center text-base leading-8">
                                 <ImgCard img={background_image.url} />
                             </div>
                         </div>

@@ -55,17 +55,10 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({
     }
 
     const vacancyList = results?.map((v, i) => {
-        const borderColor = i % 2 === 0 ? 'border-primary-blue' : 'border-primary-yellow'
-        const btnBgColor =
-            i % 2 === 0 ? 'bg-primary-yellow hover:bg-secondary-yellow' : 'bg-primary-blue hover:bg-secondary-blue'
-
         return (
             <div
                 key={i}
-                className={classNames(
-                    'bg-gray-100 overflow-hidden sm:rounded-lg mb-8 border-2 grid grid-cols-1 md:grid-cols-4 p-4 md:p-0 shadow-md',
-                    borderColor
-                )}
+                className="bg-gray-100 overflow-hidden sm:rounded-lg mb-8 border-2 grid grid-cols-1 md:grid-cols-4 p-4 md:p-0 shadow-md border-primary-blue"
             >
                 <div className="px-4 py-5 sm:px-6 col-span-3">
                     <div className="text-lg leading-6 font-medium text-dark pb-3 uppercase tracking-wider">
@@ -83,7 +76,9 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({
                 </div>
                 <div className="flex flex-col items-center justify-center">
                     <Link href={`/vacancies/${v.id}`}>
-                        <a className={classNames(`px-4 py-3 rounded-md text-light`, btnBgColor)}>See more</a>
+                        <a className="px-4 py-3 rounded-md text-light bg-primary-yellow hover:bg-secondary-yellow">
+                            See more
+                        </a>
                     </Link>
                 </div>
             </div>
@@ -109,7 +104,9 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({
                 {vacancyList.length && (
                     <section className="relative bg-light">
                         <div className="container mx-auto max-w-5xl px-4">
-                            <div className="text-gray-600 text-xl tracking-widest mb-4 uppercase">Current openings</div>
+                            <div className="text-gray-600 text-xl tracking-widest mb-4 uppercase ml-7">
+                                Current openings
+                            </div>
                             {vacancyList}
                         </div>
                     </section>

@@ -26,7 +26,7 @@ export async function getStaticProps() {
 }
 
 export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({ clients, contact }): JSX.Element => {
-    const { title, description, background_image, section: sections } = clients.results[0].data
+    const { title, summary, description, background_image, section: sections } = clients.results[0].data
     const { logo } = contact.results[0].data
 
     const bgColors = [
@@ -53,12 +53,15 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({ clie
                     </div>
                     <div className="container max-w-7xl mx-auto px-4 bg-light">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                            <div className="items-center flex flex-col justify-center text-xl leading-8 text-justify">
+                            <div className="items-start flex flex-col justify-center text-xl leading-8 text-justify">
+                                <div className="text-gray-400 text-2xl py-5">
+                                    <RichText render={summary} />
+                                </div>
                                 <div className="text-xl leading-8 space-y-5">
                                     <RichText render={description} />
                                 </div>
                             </div>
-                            <div className="items-start flex flex-row text-base leading-8 text-start pt-8">
+                            <div className="items-center flex flex-row text-base leading-8 text-start pt-8">
                                 <ImgCard img={background_image.url} />
                             </div>
                         </div>

@@ -52,13 +52,13 @@ const VacancyShow: NextPage<StaticPageProps<typeof getServerSideProps>> = ({ con
                                     <RichText render={role.overview} htmlSerializer={htmlSerializer} />
                                 </div>
                             )}
-                            <div className="mt-10 md:mt-20 text-center w-full">
-                                <a className="px-4 py-3 rounded-md text-light bg-primary-blue hover:bg-dark cursor-pointer">
+                            <div className="mt-10 md:mt-20 text-center w-full hidden xl:block">
+                                <a className="px-4 py-3 rounded-md text-light bg-primary-yellow hover:bg-secondary-yellow cursor-pointer">
                                     Apply now
                                 </a>
                             </div>
                         </div>
-                        <div className="col-span-3 leading-8 text-justify space-y-5">
+                        <div className="col-span-3 leading-8 text-justify space-y-2 sm:space-y-5 ">
                             {role.company && (
                                 <div className="">
                                     <div className="text-xl py-3 font-semibold">Company</div>
@@ -77,6 +77,11 @@ const VacancyShow: NextPage<StaticPageProps<typeof getServerSideProps>> = ({ con
                                     <RichText render={role.education_and_experience} htmlSerializer={htmlSerializer} />
                                 </div>
                             )}
+                        </div>
+                        <div className="col-span-3 md:mt-5 text-center w-full xl:hidden mx-auto">
+                            <a className="px-4 py-3 rounded-md text-light bg-primary-yellow hover:bg-secondary-yellow cursor-pointer">
+                                Apply now
+                            </a>
                         </div>
                     </div>
                 </section>

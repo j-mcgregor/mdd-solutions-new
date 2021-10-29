@@ -46,17 +46,15 @@ export const About: NextPage<StaticPageProps<typeof getStaticProps>> = ({ about,
                     </div>
                     <div className="container relative mx-auto">
                         <div className="items-start flex flex-wrap justify-start">
-                            <div className="w-full lg:w-8/12 p-12 text-center bg-gray-800 bg-opacity-70 rounded-xl shadow-xl">
-                                <div className="pr-12">
-                                    <AnimateIn animateIn triggerOnce className="font-semibold py-10 text-left">
-                                        <div className="text-4xl text-yellow-400 uppercase py-4">
-                                            <RichText render={title} />
-                                        </div>
-                                        <div className="text-xl mt-4 text-gray-50 leading-8 font-light">
-                                            <RichText render={description} />
-                                        </div>
-                                    </AnimateIn>
-                                </div>
+                            <div className="w-full lg:w-8/12 px-12 pt-8 pb-12 text-center bg-gray-800 bg-opacity-70 rounded-xl shadow-xl">
+                                <AnimateIn animateIn triggerOnce className="font-semibold py-3 text-left">
+                                    <div className="text-4xl text-yellow-400 uppercase py-4">
+                                        <RichText render={title} />
+                                    </div>
+                                    <div className="text-xl mt-4 text-gray-50 leading-8 font-light">
+                                        <RichText render={description} />
+                                    </div>
+                                </AnimateIn>
                             </div>
                         </div>
                     </div>

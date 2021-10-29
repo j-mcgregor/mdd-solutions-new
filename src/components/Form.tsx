@@ -70,7 +70,7 @@ const Form: React.FC<FormProps> = ({ labelColor = 'text-gray-200' }) => {
             </div>
             <div className="text-center mt-6">
                 <button
-                    className="bg-blue-800 hover:bg-primary-yellow text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+                    className="bg-blue-800 hover:bg-secondary-blue text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
                     type="button"
                     style={{ transition: 'all .15s ease' }}
                 >
