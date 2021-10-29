@@ -10,6 +10,7 @@ import classNames from 'classnames'
 
 interface NavbarProps {
     logo?: ImageProps
+    logo_inverse?: ImageProps
     invert?: boolean
 }
 
@@ -98,7 +99,7 @@ const Navbar: NextPage<NavbarProps> = ({ logo }) => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="h-16">
                     <div className="flex flex-row h-full content-center justify-between">
-                        <div className="">
+                        <div className="flex items-center justify-center">
                             <Link href="/">
                                 <img src={logo?.url} alt={logo?.alt} className="w-32 cursor-pointer" />
                             </Link>

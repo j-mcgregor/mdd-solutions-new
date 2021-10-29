@@ -41,8 +41,8 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({ cont
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <MainLayout contact={contact.results[0].data} logo={logo}>
-                <Header title={title} bgColor="bg-gradient-to-tl from-blue-800 to-blue-900" />
-                <section className="relative py-20 bg-light">
+                <Header title={title} bgColor="bg-gradient-to-br from-primary-blue to-secondary-blue" />
+                <section className="relative py-12 bg-light">
                     <div
                         className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
                         style={{ height: '80px', transform: 'translateZ(0)' }}
@@ -51,15 +51,15 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({ cont
                     </div>
 
                     <div className="container mx-auto max-w-7xl px-4">
-                        <div className={`grid xl:grid-cols-2 grid-cols-1 p-5 lg:p-10 gap-8 md:gap-16`}>
-                            <div className="flex items-start flex-col justify-center text-blue-700 shadow-lg rounded-3xl bg-gradient-to-br from-primary-yellow to-secondary-yellow px-4 py-10 md:px-20">
+                        <div className={`grid md:grid-cols-2 grid-cols-1 p-5 lg:p-10 gap-8 md:gap-28`}>
+                            <div className="flex items-start flex-col justify-center text-blue-700 shadow-lg rounded-3xl bg-gradient-to-br from-primary-yellow to-secondary-yellow px-4 py-10 md:px-12 lg:px-20">
                                 <h4 className="text-xl md:text-2xl font-semibold uppercase">Get in touch with us</h4>
                                 <p className="my-1 text-base">
                                     Complete this form and we will get back to you in 24 hours.
                                 </p>
                                 <Form labelColor="text-primary-blue" />
                             </div>
-                            <div className="flex items-start flex-col px-4 py-10 ">
+                            <div className="flex items-center justify-center flex-col px-4 py-10 ">
                                 <div className="space-y-5">
                                     <div className="flex items-center justify-start text-primary-blue text-lg">
                                         <AiFillHome size={25} className="" />{' '}

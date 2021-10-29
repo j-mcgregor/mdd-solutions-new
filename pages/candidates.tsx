@@ -34,7 +34,7 @@ export const Candidates: NextPage<StaticPageProps<typeof getStaticProps>> = ({ c
         typical_roles,
         typical_role_title,
     } = candidates.results[0].data
-    const { logo } = contact.results[0].data
+    const { logo_inverse } = contact.results[0].data
 
     return (
         <div>
@@ -42,7 +42,7 @@ export const Candidates: NextPage<StaticPageProps<typeof getStaticProps>> = ({ c
                 <title>Candidates | MDD Solutions</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <MainLayout contact={contact.results[0].data} logo={logo}>
+            <MainLayout contact={contact.results[0].data} logo={logo_inverse}>
                 <Header title={title} bgColor="bg-gradient-to-br from-primary-yellow to-secondary-yellow" />
                 <section className="relative p-4 md:py-32">
                     <div
@@ -54,11 +54,11 @@ export const Candidates: NextPage<StaticPageProps<typeof getStaticProps>> = ({ c
 
                     <div className="container max-w-7xl mx-auto px-4 bg-light">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                            <div className="items-center flex flex-col text-xl leading-10 text-justify">
-                                <div className="text-gray-400 text-3xl py-5">
+                            <div className="items-center flex flex-col text-xl leading-8 text-justify">
+                                <div className="text-gray-400 text-2xl py-5">
                                     <RichText render={summary} />
                                 </div>
-                                <div className="text-base leading-8 space-y-5">
+                                <div className="text-xl leading-8 space-y-5">
                                     <RichText render={description} />
                                 </div>
                             </div>
@@ -68,19 +68,19 @@ export const Candidates: NextPage<StaticPageProps<typeof getStaticProps>> = ({ c
                         </div>
                     </div>
                 </section>
-                <section className="bg-gradient-to-br from-primary-yellow to-secondary-yellow w-full p-10 md:p-20">
-                    <div className="max-w-8xl mx-auto text-center py-8 text-3xl font-light uppercase tracking-wider">
+                <section className="bg-primary-blue w-full p-7 md:px-16 md:py-8">
+                    <div className="max-w-8xl mx-auto text-center py-8 text-3xl font-light uppercase tracking-wider text-primary-yellow">
                         <RichText render={typical_role_title} />
                     </div>
                     <div
-                        className={`font-light max-w-8xl mx-auto grid gap-10 grid-cols-1 md:grid-cols-3 xl:grid-cols-${typical_roles.length}`}
+                        className={`mt-6 font-light max-w-8xl mx-auto grid gap-10 grid-cols-1 md:grid-cols-3 xl:grid-cols-${typical_roles.length}`}
                     >
                         {typical_roles.map((role, i) => (
-                            <div key={i} className="px-4 py-3 text-lg rounded-xl bg-blue-900 text-white shadow-xl">
+                            <div key={i} className="px-4 py-3 text-lg rounded-xl bg-primary-yellow text-dark shadow-xl">
                                 <div className="text-xl py-3 uppercase tracking-wider border-b-2 border-blue-700">
                                     <RichText render={role.title1} />
                                 </div>
-                                <div className="text-base leading-10 tracking-wider">
+                                <div className="text-base leading-8 tracking-wider py-2">
                                     <RichText render={role.roles} />
                                 </div>
                             </div>
@@ -88,7 +88,7 @@ export const Candidates: NextPage<StaticPageProps<typeof getStaticProps>> = ({ c
                     </div>
                     <div className="w-full mt-10">
                         <Link href="/vacancies">
-                            <a className="bg-primary-blue flex items-center justify-center p-6 rounded-xl mx-auto md:w-80 text-white text-lg my-6 transition duration-150 hover:bg-secondary-blue cursor-pointer uppercase">
+                            <a className="bg-primary-yellow hover:bg-secondary-yellow flex items-center justify-center p-4 rounded-xl mx-auto md:w-80 text-dark text-lg my-6 transition duration-150 cursor-pointer uppercase">
                                 See our vacancies
                                 <AiOutlineArrowRight size={25} className="ml-1 fill-current" />
                             </a>

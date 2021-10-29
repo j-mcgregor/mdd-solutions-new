@@ -16,7 +16,7 @@ export const InversePolygon: React.FC<{ fillColor?: string }> = ({ fillColor }) 
     )
 }
 
-const Polygon: React.FC<{ fillColor?: string }> = ({ fillColor }) => {
+const Polygon: React.FC<{ fillColor?: string }> = ({ fillColor = '#eeeeee' }) => {
     return (
         <svg
             className="absolute bottom-0 overflow-hidden"

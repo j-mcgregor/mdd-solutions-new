@@ -44,21 +44,6 @@ const Form: React.FC<FormProps> = ({ labelColor = 'text-gray-200' }) => {
                         style={{ transition: 'all .15s ease' }}
                     />
                 </div>
-
-                <div className="relative w-full mb-3">
-                    <label className={`block uppercase ${labelColor} text-xs font-bold mb-2`} htmlFor="email">
-                        County
-                    </label>
-                    <input
-                        type="email"
-                        className="px-3 py-3 placeholder-gray-400 text-dark bg-white rounded text-sm focus:outline-none focus:shadow-outline w-full"
-                        placeholder="County"
-                        style={{ transition: 'all .15s ease' }}
-                    />
-                </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-10">
                 <div className="relative w-full mb-3">
                     <label className={`block uppercase ${labelColor} text-xs font-bold mb-2`} htmlFor="email">
                         Phone
@@ -67,18 +52,6 @@ const Form: React.FC<FormProps> = ({ labelColor = 'text-gray-200' }) => {
                         type="email"
                         className="px-3 py-3 placeholder-gray-400 text-dark bg-white rounded text-sm focus:outline-none focus:shadow-outline w-full"
                         placeholder="Phone"
-                        style={{ transition: 'all .15s ease' }}
-                    />
-                </div>
-
-                <div className="relative w-full mb-3">
-                    <label className={`block uppercase ${labelColor} text-xs font-bold mb-2`} htmlFor="email">
-                        LinkedIn
-                    </label>
-                    <input
-                        type="email"
-                        className="px-3 py-3 placeholder-gray-400 text-dark bg-white rounded text-sm focus:outline-none focus:shadow-outline w-full"
-                        placeholder="LinkedIn"
                         style={{ transition: 'all .15s ease' }}
                     />
                 </div>

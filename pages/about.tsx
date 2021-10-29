@@ -25,7 +25,7 @@ export async function getStaticProps() {
 }
 
 export const About: NextPage<StaticPageProps<typeof getStaticProps>> = ({ about, contact }): JSX.Element => {
-    const { title, description, list_items, about_image } = about.results[0].data
+    const { title, subtitle, description, list_items, about_image } = about.results[0].data
     const { logo } = contact.results[0].data
 
     return (
@@ -63,8 +63,10 @@ export const About: NextPage<StaticPageProps<typeof getStaticProps>> = ({ about,
                 </section>
                 <section className="md:p-20">
                     <div className="container max-w-7xl mx-auto">
-                        <div className="text-3xl font-bold py-5">Why choose us?</div>
-                        <div className="leading-10 divide-y-2 divide-gray-800 divide-opacity-50">
+                        <div className="text-3xl font-bold py-5">
+                            <RichText render={subtitle} />
+                        </div>
+                        <div className="leading-8">
                             {list_items.map((li, i) => (
                                 <Disclosure key={i}>
                                     {({ open }) => (

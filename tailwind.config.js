@@ -2,16 +2,11 @@ module.exports = {
     purge: ['./src/components/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}'],
     darkMode: false, // or 'media' or 'class'
     theme: {
-        // colors: {
-        //     'primary-blue': '#143959',
-        //     'secondary-blue': '#226096',
-        //     'primary-yellow': '#f4b41a',
-        //     'secondary-yellow': '#f8cb63',
-        //     accent: '#76c086',
-        //     light: '#eeeeee',
-        //     dark: '#333333',
-        // },
         extend: {
+            fontFamily: {
+                primary: ['Arimo Regular'],
+                'primary-bold': ['Arimo Bold'],
+            },
             colors: {
                 blue: {
                     100: '#69b8f8',
@@ -25,7 +20,7 @@ module.exports = {
                     900: '#0b1e2f',
                 },
                 'primary-blue': '#143959',
-                'secondary-blue': '#226096',
+                'secondary-blue': '#1A4A74',
                 'primary-yellow': '#f4b41a',
                 'secondary-yellow': '#f8cb63',
                 accent: '#76c086',

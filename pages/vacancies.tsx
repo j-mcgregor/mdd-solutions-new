@@ -44,7 +44,7 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({
     }, [roles, showNum])
 
     const { title } = vacancies.results[0].data
-    const { logo } = contact.results[0].data
+    const { logo_inverse } = contact.results[0].data
 
     const handleShowMore = () => {
         setLoading(true)
@@ -55,7 +55,9 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({
     }
 
     const vacancyList = results?.map((v, i) => {
-        const borderColor = i % 2 === 0 ? 'border-blue-400' : 'border-yellow-400'
+        const borderColor = i % 2 === 0 ? 'border-primary-blue' : 'border-primary-yellow'
+        const btnBgColor =
+            i % 2 === 0 ? 'bg-primary-yellow hover:bg-secondary-yellow' : 'bg-primary-blue hover:bg-secondary-blue'
 
         return (
             <div
@@ -81,7 +83,7 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({
                 </div>
                 <div className="flex flex-col items-center justify-center">
                     <Link href={`/vacancies/${v.id}`}>
-                        <a className="bg-accent px-4 py-3 rounded-md text-light">See more</a>
+                        <a className={classNames(`px-4 py-3 rounded-md text-light`, btnBgColor)}>See more</a>
                     </Link>
                 </div>
             </div>
@@ -94,9 +96,9 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({
                 <title>Contact | MDD Solutions</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <MainLayout contact={contact.results[0].data} logo={logo} invertNavLinks>
+            <MainLayout contact={contact.results[0].data} logo={logo_inverse} invertNavLinks>
                 <Header title={title} bgColor="bg-gradient-to-br from-primary-yellow to-secondary-yellow" />
-                <section className="relative py-10 bg-light">
+                <section className="relative pt-10 bg-light">
                     <div
                         className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
                         style={{ height: '80px', transform: 'translateZ(0)' }}

@@ -75,18 +75,15 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                             <div className="items-start flex flex-wrap">
                                 <div className="w-full lg:w-6/12 px-4 text-center">
                                     <div className="pr-12">
-                                        <AnimateIn
-                                            animateIn
-                                            triggerOnce
-                                            className="text-light font-semibold py-10 text-left"
-                                        >
-                                            <div className="text-8xl">
+                                        <AnimateIn animateIn triggerOnce className="text-light py-10 text-left">
+                                            {/* <div className="text-8xl">
                                                 <div className="text-primary-yellow">MDD</div>
                                                 <div className="font-light tracking-wide">Solutions</div>
                                             </div>
                                             <div className="text-xl mt-4 tracking-widest font-light">
                                                 Lorem ipsum dolor sit amet
-                                            </div>
+                                            </div> */}
+                                            <img src="/images/logo-transparent.png" alt="" />
                                         </AnimateIn>
                                     </div>
                                 </div>
@@ -102,8 +99,8 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                     {/* ============== DESC 1 ============== */}
                     <section className="relative pt-32 pb-48 flex content-center items-center justify-center bg-blue-900">
                         <div className="container max-w-6xl relative mx-auto">
-                            <div className="grid grid-cols-3 mt-4 text-xl text-light leading-10 p-10 xl:p-1">
-                                <div className="col-span-2 text-justify">
+                            <div className="grid grid-cols-3 mt-4 text-xl text-light leading-8 p-10 xl:p-1">
+                                <div className="col-span-2 text-justify text-xl leading-8">
                                     <RichText render={description_1} htmlSerializer={htmlSerializer} />
                                 </div>
                             </div>
@@ -112,26 +109,26 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                             className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
                             style={{ height: '70px', transform: 'translateZ(0)  scale(-1, 1)' }}
                         >
-                            <Polygon fillColor="#226096" />
+                            <Polygon fillColor="#eeeeee" />
                         </div>
                     </section>
                     {/* ============== DESC 2 ============== */}
-                    <section className="relative pt-32 pb-48 flex content-center items-center justify-center bg-secondary-blue">
+                    <section className="relative pt-32 pb-48 flex content-center items-center justify-center bg-light">
                         <div className="container max-w-6xl relative mx-auto">
-                            <div className="grid grid-cols-3 mt-4 text-xl text-light leading-10 p-10 xl:p-1">
-                                <div className="col-span-2 col-start-2 text-justify">
+                            <div className="grid grid-cols-3 mt-4 text-xl text-dark p-10 xl:p-1">
+                                <div className="col-span-2 col-start-2 text-justify text-xl leading-8 ">
                                     <RichText render={description_2} htmlSerializer={htmlSerializer} />
                                 </div>
                             </div>
                         </div>
                     </section>
                     {/* ============== SECTORS ============== */}
-                    <section className="relative py-32 bg-gradient-to-b from-gray-800 to-gray-900 text-gray-50 pb-56">
+                    <section className="relative py-32 bg-primary-blue text-gray-50 pb-56">
                         <div
                             className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
                             style={{ height: '80px', transform: 'translateZ(0)' }}
                         >
-                            <Polygon fillColor="#1F2937" />
+                            <Polygon fillColor="#143959" />
                         </div>
 
                         <div className="container mx-auto max-w-7xl px-4 text-center">
@@ -139,7 +136,7 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                                 <RichText render={sector_title} />
                             </h2>
                             {sector_subtitle && (
-                                <h4 className="font-semibold text-2xl py-3">
+                                <h4 className="text-2xl py-3">
                                     <RichText render={sector_subtitle} />
                                 </h4>
                             )}
