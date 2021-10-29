@@ -82,13 +82,13 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                             className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
                             style={{ height: '70px', transform: 'translateZ(0)' }}
                         >
-                            <Polygon fillColor="#0b1e2f" />
+                            <Polygon fillColor="#eeeeee" />
                         </div>
                     </section>
                     {/* ============== DESC 1 ============== */}
-                    <section className="relative pt-20 pb-32 flex content-center items-center justify-center bg-blue-900">
+                    <section className="relative pt-20 pb-32 flex content-center items-center justify-center bg-light">
                         <div className="container max-w-6xl relative mx-auto">
-                            <div className="grid grid-cols-3 text-xl text-light leading-8 p-10 xl:p-1">
+                            <div className="grid grid-cols-3 text-xl text-dark leading-8 p-10 xl:p-1">
                                 <div className="col-span-2 text-justify text-xl leading-8">
                                     <RichText render={description_1} htmlSerializer={htmlSerializer} />
                                 </div>
@@ -98,11 +98,11 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                             className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
                             style={{ height: '70px', transform: 'translateZ(0)  scale(-1, 1)' }}
                         >
-                            <Polygon fillColor="#eeeeee" />
+                            <Polygon fillColor="#f4b41a" />
                         </div>
                     </section>
                     {/* ============== DESC 2 ============== */}
-                    <section className="relative pt-20 pb-32 flex content-center items-center justify-center bg-light">
+                    <section className="relative pt-20 pb-32 flex content-center items-center justify-center bg-primary-yellow">
                         <div className="container max-w-6xl relative mx-auto">
                             <div className="grid grid-cols-3 text-xl text-dark p-10 xl:p-1">
                                 <div className="col-span-2 col-start-2 text-justify text-xl leading-8 ">
