@@ -42,13 +42,9 @@ const Form: React.FC<FormProps> = ({ labelColor = 'text-gray-200' }) => {
         setLoading(true)
         e.preventDefault()
 
-        Axios.post(
-            '/',
-            { 'form-name': 'contact', fullName, email, phone, city, message },
-            {
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            }
-        )
+        Axios.post('/', JSON.stringify({ 'form-name': 'contact', fullName, email, phone, city, message }), {
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        })
             .then(() => {
                 setMessageSuccess(true)
                 setFormMessage("Thanks! We'll be in touch soon!")
