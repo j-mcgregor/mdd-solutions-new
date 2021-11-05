@@ -74,7 +74,7 @@ const Form: React.FC<FormProps> = ({ labelColor = 'text-gray-200' }) => {
                 </p>
 
                 <div className="relative w-full mb-3 mt-8">
-                    <label className={`block uppercase ${labelColor} text-xs font-bold mb-2`} htmlFor="full-name">
+                    <label className={`block uppercase ${labelColor} text-xs font-bold mb-2`} htmlFor="fullName">
                         Full Name
                     </label>
                     <input
@@ -82,7 +82,8 @@ const Form: React.FC<FormProps> = ({ labelColor = 'text-gray-200' }) => {
                         className="px-3 py-3 placeholder-gray-400 text-dark bg-white rounded text-sm focus:outline-none focus:shadow-outline w-full"
                         placeholder="Full Name"
                         style={{ transition: 'all .15s ease' }}
-                        id="full-name"
+                        id="fullName"
+                        name="fullName"
                         value={fullName}
                         onChange={(e) => setFullName(e.target.value)}
                         required
@@ -99,6 +100,7 @@ const Form: React.FC<FormProps> = ({ labelColor = 'text-gray-200' }) => {
                         placeholder="Email"
                         style={{ transition: 'all .15s ease' }}
                         id="email"
+                        name="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
@@ -116,6 +118,7 @@ const Form: React.FC<FormProps> = ({ labelColor = 'text-gray-200' }) => {
                             placeholder="City"
                             style={{ transition: 'all .15s ease' }}
                             id="city"
+                            name="city"
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
                             required
@@ -131,6 +134,7 @@ const Form: React.FC<FormProps> = ({ labelColor = 'text-gray-200' }) => {
                             placeholder="Phone"
                             style={{ transition: 'all .15s ease' }}
                             id="phone"
+                            name="phone"
                             value={phone}
                             onChange={(e) => setPhone(e.target.value)}
                             required
@@ -148,6 +152,7 @@ const Form: React.FC<FormProps> = ({ labelColor = 'text-gray-200' }) => {
                         className="px-3 py-3 placeholder-gray-400 text-dark bg-white rounded text-sm shaw focus:outline-none focus:shadow-outline w-full"
                         placeholder="Type a message..."
                         id="message"
+                        name="message"
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         required
