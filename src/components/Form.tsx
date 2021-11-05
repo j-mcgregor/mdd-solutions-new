@@ -32,17 +32,17 @@ const Form: React.FC<FormProps> = ({ labelColor = 'text-gray-200' }) => {
         }
     }
 
-    // function encode(data: Record<string, string>) {
-    //     return Object.keys(data)
-    //         .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-    //         .join('&')
-    // }
+    function encode(data: Record<string, string>) {
+        return Object.keys(data)
+            .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+            .join('&')
+    }
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         setLoading(true)
         e.preventDefault()
 
-        Axios.post('/', JSON.stringify({ 'form-name': 'contact', fullName, email, phone, city, message }), {
+        Axios.post('/', encode({ 'form-name': 'contact', fullName, email, phone, city, message }), {
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         })
             .then(() => {
