@@ -32,19 +32,23 @@ const Form: React.FC<FormProps> = ({ labelColor = 'text-gray-200' }) => {
         }
     }
 
-    function encode(data: Record<string, string>) {
-        return Object.keys(data)
-            .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-            .join('&')
-    }
+    // function encode(data: Record<string, string>) {
+    //     return Object.keys(data)
+    //         .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    //         .join('&')
+    // }
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         setLoading(true)
         e.preventDefault()
 
-        Axios.post('/', encode({ 'form-name': 'contact', fullName, email, phone, city, message }), {
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        })
+        Axios.post(
+            '/',
+            { 'form-name': 'contact', fullName, email, phone, city, message },
+            {
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            }
+        )
             .then(() => {
                 setMessageSuccess(true)
                 setFormMessage("Thanks! We'll be in touch soon!")
@@ -61,10 +65,11 @@ const Form: React.FC<FormProps> = ({ labelColor = 'text-gray-200' }) => {
         <>
             <form
                 name="contact"
-                method="POST"
+                // method="POST"
                 onSubmit={handleSubmit}
                 data-netlify="true"
                 data-netlify-recaptcha="true"
+                data-netlify-honeypot="bot-field"
             >
                 <input type="hidden" name="form-name" value="contact" />
                 <p className="hidden">
