@@ -7,8 +7,19 @@ interface FormProps {
 
 const Form: React.FC<FormProps> = ({ labelColor = 'text-gray-200' }) => {
     return (
-        <form name="contact" method="POST" data-netlify="true" onSubmit={(e) => e.preventDefault()}>
+        <form
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            onSubmit={(e) => e.preventDefault()}
+            data-netlify-recaptcha="true"
+        >
             <input type="hidden" name="form-name" value="contact" />
+            <p className="hidden">
+                <label>
+                    Don’t fill this out if you’re human: <input name="bot-field" />
+                </label>
+            </p>
 
             <div className="relative w-full mb-3 mt-8">
                 <label className={`block uppercase ${labelColor} text-xs font-bold mb-2`} htmlFor="full-name">
@@ -75,6 +86,8 @@ const Form: React.FC<FormProps> = ({ labelColor = 'text-gray-200' }) => {
                     id="message"
                 />
             </div>
+            <div data-netlify-recaptcha="true"></div>
+
             <div className="text-center mt-6">
                 <button
                     className="bg-blue-800 hover:bg-secondary-blue text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
