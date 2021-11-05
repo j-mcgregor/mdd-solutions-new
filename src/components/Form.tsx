@@ -65,7 +65,8 @@ const Form: React.FC<FormProps> = ({ labelColor = 'text-gray-200' }) => {
         <>
             <form
                 name="contact"
-                // method="POST"
+                method="POST"
+                action="/"
                 onSubmit={handleSubmit}
                 data-netlify="true"
                 data-netlify-recaptcha="true"
