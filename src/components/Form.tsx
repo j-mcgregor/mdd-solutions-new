@@ -17,7 +17,7 @@ const Form: React.FC<FormProps> = ({ labelColor = 'text-gray-200' }) => {
     const [loading, setLoading] = useState<boolean>(false)
     const [formMessage, setFormMessage] = useState<string>('')
     const [messageSuccess, setMessageSuccess] = useState<boolean | null>(null)
-    const [isOpen, setIsOpen] = useState(true)
+    const [isOpen, setIsOpen] = useState(false)
 
     const closeModal = () => {
         setIsOpen(false)
