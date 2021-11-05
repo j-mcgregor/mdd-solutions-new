@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 
 interface FormProps {
     textColor?: string
@@ -7,7 +7,9 @@ interface FormProps {
 
 const Form: React.FC<FormProps> = ({ labelColor = 'text-gray-200' }) => {
     return (
-        <div>
+        <form name="contact" method="POST" data-netlify="true" onSubmit={(e) => e.preventDefault()}>
+            <input type="hidden" name="form-name" value="contact" />
+
             <div className="relative w-full mb-3 mt-8">
                 <label className={`block uppercase ${labelColor} text-xs font-bold mb-2`} htmlFor="full-name">
                     Full Name
@@ -17,6 +19,7 @@ const Form: React.FC<FormProps> = ({ labelColor = 'text-gray-200' }) => {
                     className="px-3 py-3 placeholder-gray-400 text-dark bg-white rounded text-sm focus:outline-none focus:shadow-outline w-full"
                     placeholder="Full Name"
                     style={{ transition: 'all .15s ease' }}
+                    id="full-name"
                 />
             </div>
 
@@ -29,6 +32,7 @@ const Form: React.FC<FormProps> = ({ labelColor = 'text-gray-200' }) => {
                     className="px-3 py-3 placeholder-gray-400 text-dark bg-white rounded text-sm focus:outline-none focus:shadow-outline w-full"
                     placeholder="Email"
                     style={{ transition: 'all .15s ease' }}
+                    id="email"
                 />
             </div>
 
@@ -38,21 +42,23 @@ const Form: React.FC<FormProps> = ({ labelColor = 'text-gray-200' }) => {
                         City
                     </label>
                     <input
-                        type="email"
+                        type="text"
                         className="px-3 py-3 placeholder-gray-400 text-dark bg-white rounded text-sm focus:outline-none focus:shadow-outline w-full"
                         placeholder="City"
                         style={{ transition: 'all .15s ease' }}
+                        id="city"
                     />
                 </div>
                 <div className="relative w-full mb-3">
-                    <label className={`block uppercase ${labelColor} text-xs font-bold mb-2`} htmlFor="email">
+                    <label className={`block uppercase ${labelColor} text-xs font-bold mb-2`} htmlFor="phone">
                         Phone
                     </label>
                     <input
-                        type="email"
+                        type="text"
                         className="px-3 py-3 placeholder-gray-400 text-dark bg-white rounded text-sm focus:outline-none focus:shadow-outline w-full"
                         placeholder="Phone"
                         style={{ transition: 'all .15s ease' }}
+                        id="phone"
                     />
                 </div>
             </div>
@@ -66,6 +72,7 @@ const Form: React.FC<FormProps> = ({ labelColor = 'text-gray-200' }) => {
                     cols={80}
                     className="px-3 py-3 placeholder-gray-400 text-dark bg-white rounded text-sm shaw focus:outline-none focus:shadow-outline w-full"
                     placeholder="Type a message..."
+                    id="message"
                 />
             </div>
             <div className="text-center mt-6">
@@ -77,7 +84,7 @@ const Form: React.FC<FormProps> = ({ labelColor = 'text-gray-200' }) => {
                     Send Message
                 </button>
             </div>
-        </div>
+        </form>
     )
 }
 

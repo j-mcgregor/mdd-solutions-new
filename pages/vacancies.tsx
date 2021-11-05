@@ -1,5 +1,3 @@
-import classNames from 'classnames'
-import moment from 'moment'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -65,14 +63,6 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({
                         {RichText.render(v.data.title)}
                     </div>
                     <p className="mt-1 max-w-2xl text-sm text-gray-500 pb-8">{RichText.render(v.data.summary)}</p>
-                    <div>
-                        <p className="mt-1 max-w-2xl text-xs text-gray-500">
-                            First Uploaded {moment(v.data.first_uploaded).format('LL')}
-                        </p>
-                        <p className="mt-1 max-w-2xl text-xs text-gray-500">
-                            Start Date: {moment(v.data.start_date).format('LL')}
-                        </p>
-                    </div>
                 </div>
                 <div className="flex flex-col items-center justify-center">
                     <Link href={`/vacancies/${v.id}`}>
