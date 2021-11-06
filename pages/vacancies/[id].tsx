@@ -1,5 +1,6 @@
 import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import Prismic from 'prismic-javascript'
 import { RichText } from 'prismic-reactjs'
 import React from 'react'
@@ -15,11 +16,14 @@ export const getServerSideProps: GetServerSideProps = async ({ params, req }) =>
     const role = await Client().query(Prismic.Predicates.at('document.id', params.id))
     const contact = await Client().query(Prismic.Predicates.at('document.type', 'contact'))
 
+    // console.log(req.headers.)
+    console.log(req.url)
     return {
         props: {
             role: role.results[0].data,
             contact,
             url: req?.headers,
+            id: params.id,
         },
     }
 }
@@ -27,15 +31,18 @@ export const getServerSideProps: GetServerSideProps = async ({ params, req }) =>
 const StyledList = styled.div`
     ul {
         list-style: disc;
-        list-style-position: inside;
 
         li {
-            padding-left: 2px;
+            margin-left: 1em;
         }
     }
 `
 
-const VacancyShow: NextPage<StaticPageProps<typeof getServerSideProps>> = ({ contact, role, url }) => {
+const VacancyShow: NextPage<StaticPageProps<typeof getServerSideProps>> = ({ contact, role, url, id }) => {
+    const router = useRouter()
+    console.log('router :>> ', router)
+    console.log(url)
+    console.log(`${url.referer}/${id}`)
     const { logo, links } = contact.results[0].data
 
     const MAIL_TO = links.find((link: any) => link.source_name === 'mail').source.url
@@ -45,7 +52,7 @@ const VacancyShow: NextPage<StaticPageProps<typeof getServerSideProps>> = ({ con
     const MAIL_BODY = encodeURI(
         `Hi,\r\n\r\nI would like to apply for the ${RichText.asText(role.title)} role posted on ${
             url.referer
-        }.\r\n\r\nI have attached my CV for review.\r\n\r\nI look forward to hearing your response.\r\n\r\nKind regards,\r\n\r\n<your name>`
+        }.\r\n\r\nI have attached my CV for review.\r\n\r\nI look forward to hearing your response.\r\n\r\nKind regards,\r\n\r\n<your name>\r\n\r\n<your mobile number>`
     )
 
     const mailToFormatted = `${MAIL_TO}?subject=${MAIL_TITLE}&body=${MAIL_BODY}`
