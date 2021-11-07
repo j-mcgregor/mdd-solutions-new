@@ -146,7 +146,7 @@ const Navbar: NextPage<NavbarProps> = ({ logo }) => {
                 )}
             >
                 <button role="button">
-                    <VscThreeBars size={30} onClick={() => setMenuOpen(!menuOpen)} className="text-white" />
+                    <VscThreeBars size={40} onClick={() => setMenuOpen(!menuOpen)} className="text-white" />
                 </button>
                 {menuOpen && (
                     <div className="flex flex-col justify-center items-start h-full w-full">
