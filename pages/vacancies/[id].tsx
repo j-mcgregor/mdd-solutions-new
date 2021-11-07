@@ -1,6 +1,5 @@
 import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
 import Prismic from 'prismic-javascript'
 import { RichText } from 'prismic-reactjs'
 import React from 'react'
@@ -16,8 +15,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params, req }) =>
     const role = await Client().query(Prismic.Predicates.at('document.id', params.id))
     const contact = await Client().query(Prismic.Predicates.at('document.type', 'contact'))
 
-    // console.log(req.headers.)
-    console.log(req.url)
     return {
         props: {
             role: role.results[0].data,
@@ -39,15 +36,10 @@ const StyledList = styled.div`
 `
 
 const VacancyShow: NextPage<StaticPageProps<typeof getServerSideProps>> = ({ contact, role, url, id }) => {
-    const router = useRouter()
-    console.log('router :>> ', router)
-    console.log(url)
-    console.log(`${url.referer}/${id}`)
     const { logo, links } = contact.results[0].data
 
     const MAIL_TO = links.find((link: any) => link.source_name === 'mail').source.url
 
-    // const MAIL_SRC = `<a href="${url.referer}" target="_blank" rel="noopener noreferer">MDD Solutions</a>`
     const MAIL_TITLE = encodeURI(`Application for ${RichText.asText(role.title)}`)
     const MAIL_BODY = encodeURI(
         `Hi,\r\n\r\nI would like to apply for the ${RichText.asText(role.title)} role posted on ${
@@ -74,7 +66,7 @@ const VacancyShow: NextPage<StaticPageProps<typeof getServerSideProps>> = ({ con
                     >
                         <Polygon fillColor="#eeeeee" />
                     </div>
-                    <div className="container mx-auto max-w-6xl grid grid-cols-1 xl:grid-cols-5 gap-20">
+                    <div className="container mx-auto max-w-6xl grid grid-cols-1 xl:grid-cols-5 sm:gap-20">
                         <div className="col-span-2">
                             {role.overview && (
                                 <div className="leading-8">
@@ -114,8 +106,12 @@ const VacancyShow: NextPage<StaticPageProps<typeof getServerSideProps>> = ({ con
                                 </div>
                             )}
                         </div>
-                        <div className="col-span-3 md:mt-5 text-center w-full xl:hidden mx-auto">
-                            <a className="px-4 py-3 rounded-md text-light bg-primary-yellow hover:bg-secondary-yellow cursor-pointer">
+                        <div className="col-span-3 md:mt-5 text-center w-full xl:hidden mx-auto mt-5">
+                            <a
+                                className="px-4 py-3 rounded-md text-light bg-primary-yellow hover:bg-secondary-yellow cursor-pointer"
+                                href={mailToFormatted}
+                                role="button"
+                            >
                                 Apply now
                             </a>
                         </div>

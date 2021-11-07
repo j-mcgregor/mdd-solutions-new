@@ -94,7 +94,7 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({
                 {vacancyList.length && (
                     <section className="relative bg-light">
                         <div className="container mx-auto max-w-5xl px-4">
-                            <div className="text-gray-600 text-xl tracking-widest mb-4 uppercase ml-7">
+                            <div className="text-gray-600 text-xl tracking-widest mb-4 uppercase ml-7 text-center sm:text-left">
                                 Current openings
                             </div>
                             {vacancyList}

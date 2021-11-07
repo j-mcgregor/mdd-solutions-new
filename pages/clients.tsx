@@ -44,7 +44,7 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({ clie
             </Head>
             <MainLayout contact={contact.results[0].data} logo={logo}>
                 <Header title={title} bgColor="bg-primary-blue" />
-                <section className="relative py-32 bg-light">
+                <section className="relative py-12 sm:py-32 bg-light">
                     <div
                         className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
                         style={{ height: '80px', transform: 'translateZ(0)' }}
@@ -52,7 +52,7 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({ clie
                         <Polygon fillColor="#eeeeee" />
                     </div>
                     <div className="container max-w-7xl mx-auto px-4 bg-light">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <div className="grid grid-cols-1 md:grid-cols-2 sm:gap-10">
                             <div className="items-start flex flex-col justify-center text-xl leading-8 text-justify">
                                 <div className="text-gray-400 text-2xl py-5">
                                     <RichText render={summary} />
@@ -74,7 +74,9 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({ clie
                         return (
                             <div className={classNames('', bgColors[i])} key={i}>
                                 <div
-                                    className={classNames('max-w-7xl container mx-auto grid grid-cols-3 py-20 px-5')}
+                                    className={classNames(
+                                        'max-w-7xl container mx-auto grid grid-cols-1 sm:grid-cols-3 py-20 px-5'
+                                    )}
                                     key={i}
                                 >
                                     <div className={classNames('col-span-2 leading-8', alignLeft && 'col-start-2')}>

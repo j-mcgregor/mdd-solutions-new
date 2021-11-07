@@ -88,8 +88,8 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                     {/* ============== DESC 1 ============== */}
                     <section className="relative pt-20 pb-32 flex content-center items-center justify-center bg-light">
                         <div className="container max-w-6xl relative mx-auto">
-                            <div className="grid grid-cols-3 text-xl text-dark leading-8 p-10 xl:p-1">
-                                <div className="col-span-2 text-justify text-xl leading-8">
+                            <div className="grid grid-cols-1 sm:grid-cols-3 text-xl text-dark leading-8 p-10 xl:p-1">
+                                <div className="sm:col-span-2 text-justify text-xl leading-8">
                                     <RichText render={description_1} htmlSerializer={htmlSerializer} />
                                 </div>
                             </div>
@@ -104,8 +104,8 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                     {/* ============== DESC 2 ============== */}
                     <section className="relative pt-20 pb-32 flex content-center items-center justify-center bg-primary-yellow">
                         <div className="container max-w-6xl relative mx-auto">
-                            <div className="grid grid-cols-3 text-xl text-dark p-10 xl:p-1">
-                                <div className="col-span-2 col-start-2 text-justify text-xl leading-8 ">
+                            <div className="grid grid-cols-1 sm:grid-cols-3 text-xl text-dark p-10 xl:p-1">
+                                <div className="sm:col-span-2 col-start-2 text-justify text-xl leading-8 ">
                                     <RichText render={description_2} htmlSerializer={htmlSerializer} />
                                 </div>
                             </div>
@@ -134,7 +134,7 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                                     return (
                                         <div
                                             className={classNames(
-                                                'px-20 py-16 flex items-center justify-center flex-col space-y-5 border-gray-50 ',
+                                                'px-10 sm:px-20 py-8 sm:py-16 flex items-center justify-center flex-col space-y-5 border-none sm:border-gray-50 ',
                                                 sectorsMap[i].classes
                                             )}
                                             key={i}

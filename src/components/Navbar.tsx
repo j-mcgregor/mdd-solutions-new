@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { VscThreeBars } from 'react-icons/vsc'
 
 import { ImageProps } from '../../types'
 import { useScrollPosition } from '../hooks/useScrollPosition'
@@ -29,6 +30,7 @@ const SWITCH_NAV_HEIGHT = {
 const Navbar: NextPage<NavbarProps> = ({ logo }) => {
     const [transparent, setTransparent] = useState(true)
     const [otherTransparent, setOtherTransparent] = useState(true)
+    const [menuOpen, setMenuOpen] = useState(false)
 
     useScrollPosition(
         ({ currPos }) => {
@@ -40,7 +42,7 @@ const Navbar: NextPage<NavbarProps> = ({ logo }) => {
         [transparent, otherTransparent]
     )
 
-    const router = useRouter()
+    const { pathname } = useRouter()
 
     const textColorMap = {
         '/candidates': 'text-blue-900',
@@ -57,46 +59,56 @@ const Navbar: NextPage<NavbarProps> = ({ logo }) => {
         '/vacancies/[id]': otherTransparent ? 'bg-transparent' : 'bg-primary-blue',
     }
 
+    const bgMobileColorMap = {
+        '/': transparent ? 'bg-transparent' : 'bg-blue-900',
+        '/about': 'bg-primary-blue',
+        '/candidates': 'bg-primary-yellow',
+        '/clients': 'bg-primary-blue',
+        '/contact': 'bg-blue-800',
+        '/vacancies': 'bg-primary-yellow',
+        '/vacancies/[id]': 'bg-primary-blue',
+    }
+
     const linkTabClasses = (invert?: boolean) => ({
         active: `${
-            invert ? 'text-gray-100' : textColorMap[router.pathname] ?? 'text-secondary-yellow'
+            invert ? 'text-gray-100' : textColorMap[pathname] ?? 'text-secondary-yellow'
         } px-5 uppercase text-sm font-light tracking-wider cursor-pointer`,
         default: `${
-            invert ? 'text-gray-500' : textColorMap[router.pathname] ?? 'text-light'
+            invert ? 'text-gray-500' : textColorMap[pathname] ?? 'text-light'
         } hover:text-gray-400 px-5 uppercase text-sm font-light tracking-wider cursor-pointer`,
     })
 
     const navLinks = [
         {
             href: '/about',
-            isActive: router.pathname === '/about',
+            isActive: pathname === '/about',
             label: 'About',
         },
         {
             href: '/candidates',
-            isActive: router.pathname === '/candidates',
+            isActive: pathname === '/candidates',
             label: 'Candidates',
         },
         {
             href: '/clients',
-            isActive: router.pathname === '/clients',
+            isActive: pathname === '/clients',
             label: 'Clients',
         },
         {
             href: '/vacancies',
-            isActive: router.pathname === '/vacancies',
+            isActive: pathname === '/vacancies',
             label: 'Vacancies',
         },
         {
             href: '/contact',
-            isActive: router.pathname === '/contact',
+            isActive: pathname === '/contact',
             label: 'Contact',
         },
     ]
 
     return (
-        <nav className={classNames('fixed z-50 w-full', bgColorMap[router.pathname] ?? 'bg-blue-900')}>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav className={classNames('fixed z-50 w-full', bgColorMap[pathname] ?? 'bg-blue-900')}>
+            <div className="hidden sm:block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="h-16">
                     <div className="flex flex-row h-full content-center justify-between">
                         <div className="flex items-center justify-center">
@@ -112,9 +124,8 @@ const Navbar: NextPage<NavbarProps> = ({ logo }) => {
                                             ref={React.createRef()}
                                             className={
                                                 nav.isActive
-                                                    ? linkTabClasses(
-                                                          ['/candidates', '/vacancies'].includes(router.pathname)
-                                                      ).active
+                                                    ? linkTabClasses(['/candidates', '/vacancies'].includes(pathname))
+                                                          .active
                                                     : linkTabClasses().default
                                             }
                                         >
@@ -126,6 +137,35 @@ const Navbar: NextPage<NavbarProps> = ({ logo }) => {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className={`flex flex-col items-end sm:hidden py-1 ${bgMobileColorMap[pathname]}`}>
+                <button role="button">
+                    <VscThreeBars size={30} onClick={() => setMenuOpen(!menuOpen)} className="text-white" />
+                </button>
+                {menuOpen && (
+                    <div className="flex flex-col justify-center items-start h-full w-full">
+                        <Link href="/">
+                            <StyledLink className="px-5 uppercase text-sm font-light tracking-wider cursor-pointer text-white py-2">
+                                Home
+                            </StyledLink>
+                        </Link>
+                        {navLinks.map((nav, i) => (
+                            <Link href={nav.href} key={i}>
+                                <StyledLink
+                                    ref={React.createRef()}
+                                    className={classNames(
+                                        'py-2',
+                                        nav.isActive
+                                            ? linkTabClasses(['/candidates', '/vacancies'].includes(pathname)).active
+                                            : linkTabClasses().default
+                                    )}
+                                >
+                                    {nav.label}
+                                </StyledLink>
+                            </Link>
+                        ))}
+                    </div>
+                )}
             </div>
         </nav>
     )
