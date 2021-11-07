@@ -151,9 +151,9 @@ const Navbar: NextPage<NavbarProps> = ({ logo }) => {
                 {menuOpen && (
                     <div className="flex flex-col justify-center items-start h-full w-full">
                         <Link href="/">
-                            <StyledLink className="px-5 uppercase text-sm font-light tracking-wider cursor-pointer text-white py-2">
+                            <a className="px-5 uppercase text-sm font-light tracking-wider cursor-pointer text-white py-2 w-full">
                                 Home
-                            </StyledLink>
+                            </a>
                         </Link>
                         {navLinks.map((nav, i) => (
                             <Link href={nav.href} key={i}>

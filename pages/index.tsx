@@ -41,10 +41,10 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
 
     const sectorsMap = [
         {
-            classes: 'border-r-2 border-b-2',
+            classes: 'sm:border-r-2 sm:border-b-2',
         },
-        { classes: 'border-b-2' },
-        { classes: 'border-r-2' },
+        { classes: 'sm:border-b-2' },
+        { classes: 'sm:border-r-2' },
         { classes: '' },
     ]
 
@@ -64,7 +64,7 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                         }}
                     >
                         <div
-                            className="absolute top-0 w-full h-full bg-center bg-cover bg-fixed"
+                            className="absolute top-0 w-full h-full bg-right-top sm:bg-center bg-cover bg-fixed"
                             style={{
                                 backgroundImage: `url('${background_image?.url}')`,
                             }}
@@ -135,7 +135,7 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                                     return (
                                         <div
                                             className={classNames(
-                                                'px-10 sm:px-20 py-8 sm:py-16 flex items-center justify-center flex-col space-y-5 border-none sm:border-gray-50 ',
+                                                'px-10 sm:px-20 py-8 sm:py-16 flex items-center justify-center flex-col space-y-5 sm:border-gray-50 ',
                                                 sectorsMap[i].classes
                                             )}
                                             key={i}

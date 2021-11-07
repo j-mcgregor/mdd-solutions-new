@@ -41,13 +41,13 @@ const VacancyShow: NextPage<StaticPageProps<typeof getServerSideProps>> = ({ con
     const MAIL_TO = links.find((link: any) => link.source_name === 'mail').source.url
 
     const MAIL_TITLE = encodeURI(`Application for ${RichText.asText(role.title)}`)
-    const MAIL_BODY = encodeURI(
-        `Hi,\r\n\r\nI would like to apply for the ${RichText.asText(role.title)} role posted on ${
-            url.referer
-        }.\r\n\r\nI have attached my CV for review.\r\n\r\nI look forward to hearing your response.\r\n\r\nKind regards,\r\n\r\n<your name>\r\n\r\n<your mobile number>`
-    )
+    // const MAIL_BODY = encodeURI(
+    //     `Hi,\r\n\r\nI would like to apply for the ${RichText.asText(role.title)} role posted on ${
+    //         url.referer
+    //     }.\r\n\r\nI have attached my CV for review.\r\n\r\nI look forward to hearing your response.\r\n\r\nKind regards,\r\n\r\n<your name>\r\n\r\n<your mobile number>`
+    // )
 
-    const mailToFormatted = `${MAIL_TO}?subject=${MAIL_TITLE}&body=${MAIL_BODY}`
+    const mailToFormatted = `${MAIL_TO}?subject=${MAIL_TITLE}`
 
     return (
         <div>

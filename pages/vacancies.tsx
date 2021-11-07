@@ -56,13 +56,15 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({
         return (
             <div
                 key={i}
-                className="bg-gray-100 overflow-hidden sm:rounded-lg mb-8 border-2 grid grid-cols-1 md:grid-cols-4 p-4 md:p-0 shadow-md border-primary-blue"
+                className="bg-gray-100 overflow-hidden sm:rounded-lg mb-8 border-2 grid grid-cols-1 md:grid-cols-4 p-1 sm:p-4 md:p-0 shadow-md border-primary-blue"
             >
-                <div className="px-4 py-5 sm:px-6 col-span-3">
+                <div className="px-4 py-3 sm:py-5 sm:px-6 col-span-3">
                     <div className="text-lg leading-6 font-medium text-dark pb-3 uppercase tracking-wider">
                         {RichText.render(v.data.title)}
                     </div>
-                    <p className="mt-1 max-w-2xl text-sm text-gray-500 pb-8">{RichText.render(v.data.summary)}</p>
+                    <p className="mt-1 max-w-2xl text-sm text-gray-500 pb-2 sm:pb-8">
+                        {RichText.render(v.data.summary)}
+                    </p>
                 </div>
                 <div className="flex flex-col items-center justify-center">
                     <Link href={`/vacancies/${v.id}`}>
@@ -93,17 +95,12 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({
                 </section>
                 {vacancyList.length && (
                     <section className="relative bg-light">
-                        <div className="container mx-auto max-w-5xl px-4">
-                            <div className="text-gray-600 text-xl tracking-widest mb-4 uppercase ml-7 text-center sm:text-left">
-                                Current openings
-                            </div>
-                            {vacancyList}
-                        </div>
+                        <div className="container mx-auto max-w-5xl px-4">{vacancyList}</div>
                     </section>
                 )}
                 <div className="container w-full mx-auto my-10 bg-light">
                     <button
-                        className="mx-auto bg-secondary-blue w-40 text-center text-gray-50 py-4 rounded-lg hover:bg-primary-yellow duration-150 cursor-pointer block"
+                        className="mx-auto bg-secondary-blue w-40 text-center text-gray-50 py-4 rounded-lg hover:bg-primary-blue duration-150 cursor-pointer block"
                         onClick={handleShowMore}
                         disabled={loading}
                     >

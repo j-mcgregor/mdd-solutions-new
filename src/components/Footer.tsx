@@ -1,11 +1,13 @@
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
+import { faEnvelope, faPhone, IconDefinition } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { NextPage } from 'next'
+import Link from 'next/link'
 import { RichText } from 'prismic-reactjs'
 import * as React from 'react'
 import styled from 'styled-components'
+
 import { ContactDataProps } from '../../types'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faPhone, IconDefinition } from '@fortawesome/free-solid-svg-icons'
-import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 const StyledFooter = styled.footer`
     width: 100%;
@@ -53,24 +55,14 @@ const Footer: NextPage<ContactDataProps> = ({ links, footnote }) => {
                     <div className="flex-2 sm:w-1/4 sm:mt-0">
                         <ul className="list-reset leading-normal text-primary-yellow">
                             <li className="mb-2 flex flex-row-reverse uppercase text-primary-yellow hover:text-secondary-yellow">
-                                <a
-                                    href="http://"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="p-1 text-xs text-right"
-                                >
-                                    PRIVACY POLICY
-                                </a>
+                                <Link href="/privacy-policy">
+                                    <a className="p-1 text-xs text-right">PRIVACY POLICY</a>
+                                </Link>
                             </li>
                             <li className="mb-2 flex flex-row-reverse uppercase text-primary-yellow hover:text-secondary-yellow">
-                                <a
-                                    href="http://"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="p-1 text-xs text-right"
-                                >
-                                    COOKIE POLICY
-                                </a>
+                                <Link href="/cookie-policy">
+                                    <a className="p-1 text-xs text-right">COOKIE POLICY</a>
+                                </Link>
                             </li>
                             <li className="mb-2 flex flex-row-reverse uppercase text-primary-yellow">
                                 <div className="p-1 text-xs text-right">
