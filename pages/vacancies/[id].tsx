@@ -61,7 +61,7 @@ const VacancyShow: NextPage<StaticPageProps<typeof getServerSideProps>> = ({ con
                 )}
                 <section className="relative py-12 px-4 bg-light">
                     <div
-                        className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+                        className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 hidden sm:block"
                         style={{ height: '80px', transform: 'translateZ(0)' }}
                     >
                         <Polygon fillColor="#eeeeee" />

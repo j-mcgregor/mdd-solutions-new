@@ -79,33 +79,33 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                             </div>
                         </div>
                         <div
-                            className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
+                            className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden hidden sm:block"
                             style={{ height: '70px', transform: 'translateZ(0)' }}
                         >
                             <Polygon fillColor="#eeeeee" />
                         </div>
                     </section>
                     {/* ============== DESC 1 ============== */}
-                    <section className="relative pt-20 pb-32 flex content-center items-center justify-center bg-light">
+                    <section className="relative pt-10 sm:pt-20 pb-12 sm:pb-32 flex content-center items-center justify-center bg-light">
                         <div className="container max-w-6xl relative mx-auto">
-                            <div className="grid grid-cols-1 sm:grid-cols-3 text-xl text-dark leading-8 p-10 xl:p-1">
-                                <div className="sm:col-span-2 text-justify text-xl leading-8">
+                            <div className="grid grid-cols-1 sm:grid-cols-3 text-base sm:text-xl text-dark p-10 xl:p-1">
+                                <div className="sm:col-span-2 text-left sm:text-justify text-base sm:text-xl leading-6 sm:leading-8">
                                     <RichText render={description_1} htmlSerializer={htmlSerializer} />
                                 </div>
                             </div>
                         </div>
                         <div
-                            className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
+                            className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden hidden sm:block"
                             style={{ height: '70px', transform: 'translateZ(0)  scale(-1, 1)' }}
                         >
                             <Polygon fillColor="#f4b41a" />
                         </div>
                     </section>
                     {/* ============== DESC 2 ============== */}
-                    <section className="relative pt-20 pb-32 flex content-center items-center justify-center bg-primary-yellow">
+                    <section className="relative pt-10 sm:pt-20 pb-12 sm:pb-32 flex content-center items-center justify-center bg-primary-yellow">
                         <div className="container max-w-6xl relative mx-auto">
-                            <div className="grid grid-cols-1 sm:grid-cols-3 text-xl text-dark p-10 xl:p-1">
-                                <div className="sm:col-span-2 col-start-2 text-justify text-xl leading-8 ">
+                            <div className="grid grid-cols-1 sm:grid-cols-3 text-base sm:text-xl text-dark p-10 xl:p-1">
+                                <div className="sm:col-span-2 col-start-2 text-left sm:text-justify text-base sm:text-xl leading-6 sm:leading-8 ">
                                     <RichText render={description_2} htmlSerializer={htmlSerializer} />
                                 </div>
                             </div>
@@ -114,7 +114,7 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                     {/* ============== SECTORS ============== */}
                     <section className="relative pt-20 pb-12 bg-primary-blue text-gray-50">
                         <div
-                            className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+                            className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 hidden sm:block"
                             style={{ height: '80px', transform: 'translateZ(0)' }}
                         >
                             <Polygon fillColor="#143959" />
@@ -139,10 +139,10 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                                             )}
                                             key={i}
                                         >
-                                            <div className="text-2xl uppercase text-primary-yellow">
+                                            <div className="text-xl sm:text-2xl uppercase text-primary-yellow">
                                                 <RichText render={sector.sector_title} />
                                             </div>
-                                            <div className="text-xl">
+                                            <div className="text-base sm:text-xl">
                                                 <RichText render={sector.sector_summary} />
                                             </div>
                                         </div>

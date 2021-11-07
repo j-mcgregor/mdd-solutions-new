@@ -46,18 +46,18 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({ clie
                 <Header title={title} bgColor="bg-primary-blue" />
                 <section className="relative py-12 sm:py-32 bg-light">
                     <div
-                        className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+                        className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 hidden sm:block"
                         style={{ height: '80px', transform: 'translateZ(0)' }}
                     >
                         <Polygon fillColor="#eeeeee" />
                     </div>
                     <div className="container max-w-7xl mx-auto px-4 bg-light">
                         <div className="grid grid-cols-1 md:grid-cols-2 sm:gap-10">
-                            <div className="items-start flex flex-col justify-center text-xl leading-8 text-justify">
-                                <div className="text-gray-400 text-2xl py-5">
+                            <div className="items-start flex flex-col justify-center text-xl leading-6 sm:leading-8 text-justify">
+                                <div className="text-gray-400 text-lg sm:text-2xl py-5">
                                     <RichText render={summary} />
                                 </div>
-                                <div className="text-xl leading-8 space-y-5">
+                                <div className="text-base sm:text-xl leading-6 sm:leading-8 space-y-5">
                                     <RichText render={description} />
                                 </div>
                             </div>
@@ -75,15 +75,15 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({ clie
                             <div className={classNames('', bgColors[i])} key={i}>
                                 <div
                                     className={classNames(
-                                        'max-w-7xl container mx-auto grid grid-cols-1 sm:grid-cols-3 py-20 px-5'
+                                        'max-w-7xl container mx-auto grid grid-cols-1 sm:grid-cols-3 py-10 sm:py-20 px-5'
                                     )}
                                     key={i}
                                 >
                                     <div className={classNames('col-span-2 leading-8', alignLeft && 'col-start-2')}>
-                                        <div className="text-2xl py-6">
+                                        <div className="text-lg sm:text-2xl py-6">
                                             <RichText render={section.title1} htmlSerializer={htmlSerializer} />
                                         </div>
-                                        <div className="text-xl">
+                                        <div className="text-base sm:text-xl">
                                             <RichText render={section.body} />
                                         </div>
                                     </div>

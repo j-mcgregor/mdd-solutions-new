@@ -46,12 +46,12 @@ export const About: NextPage<StaticPageProps<typeof getStaticProps>> = ({ about,
                     </div>
                     <div className="container relative mx-auto">
                         <div className="items-start flex flex-wrap justify-start">
-                            <div className="w-full lg:w-8/12 px-12 pt-8 pb-12 text-center bg-gray-800 bg-opacity-70 rounded-xl shadow-xl">
+                            <div className="w-full lg:w-8/12 px-6 sm:px-12 pt-8 pb-12 text-center bg-gray-800 bg-opacity-70 rounded-xl shadow-xl">
                                 <AnimateIn animateIn triggerOnce className="font-semibold py-3 text-left">
-                                    <div className="text-4xl text-yellow-400 uppercase py-4">
+                                    <div className="text-2xl sm:text-4xl text-yellow-400 uppercase py-4">
                                         <RichText render={title} />
                                     </div>
-                                    <div className="text-xl mt-4 text-gray-50 leading-8 font-light">
+                                    <div className="text-base sm:text-xl mt-4 text-gray-50 leading-6 sm:leading-8 font-light">
                                         <RichText render={description} />
                                     </div>
                                 </AnimateIn>
@@ -61,7 +61,7 @@ export const About: NextPage<StaticPageProps<typeof getStaticProps>> = ({ about,
                 </section>
                 <section className="md:p-20">
                     <div className="container max-w-7xl mx-auto">
-                        <div className="text-3xl font-bold py-5 text-center sm:text-left">
+                        <div className="text-xl sm:text-3xl font-bold py-5 text-center sm:text-left">
                             <RichText render={subtitle} />
                         </div>
                         <div className="leading-8">
@@ -71,7 +71,7 @@ export const About: NextPage<StaticPageProps<typeof getStaticProps>> = ({ about,
                                         <>
                                             <Disclosure.Button
                                                 className={classNames(
-                                                    'flex justify-between w-full px-4 py-5 text-xl text-left text-primary-yellow bg-primary-blue hover:bg-primary-yellow hover:text-primary-blue duration-100 font-light tracking-wider focus:outline-none',
+                                                    'flex justify-between w-full px-4 py-5 text-lg sm:text-xl text-left text-primary-yellow bg-primary-blue hover:bg-primary-yellow hover:text-primary-blue duration-100 font-light tracking-wider focus:outline-none',
                                                     {
                                                         'sm:rounded-t-xl': i === 0,
                                                         'sm:rounded-b-xl': i === list_items.length - 1,
@@ -89,7 +89,7 @@ export const About: NextPage<StaticPageProps<typeof getStaticProps>> = ({ about,
                                                 leaveFrom="transform scale-100 opacity-100"
                                                 leaveTo="transform scale-95 opacity-0"
                                             >
-                                                <Disclosure.Panel className="px-4 py-10 text-lg text-gray-500">
+                                                <Disclosure.Panel className="px-4 py-10 text-base sm:text-lg text-gray-500">
                                                     <RichText render={li.item} />
                                                 </Disclosure.Panel>
                                             </Transition>

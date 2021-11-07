@@ -85,7 +85,7 @@ export const Contact: NextPage<StaticPageProps<typeof getStaticProps>> = ({
                 <Header title={title} bgColor="bg-gradient-to-br from-primary-yellow to-secondary-yellow" />
                 <section className="relative pt-10 bg-light">
                     <div
-                        className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+                        className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 hidden sm:block"
                         style={{ height: '80px', transform: 'translateZ(0)' }}
                     >
                         <Polygon fillColor="#eeeeee" />

@@ -138,7 +138,13 @@ const Navbar: NextPage<NavbarProps> = ({ logo }) => {
                     </div>
                 </div>
             </div>
-            <div className={`flex flex-col items-end sm:hidden py-1 ${bgMobileColorMap[pathname]}`}>
+            <div
+                className={classNames(
+                    `flex flex-col items-end sm:hidden py-1`,
+                    bgMobileColorMap[pathname],
+                    menuOpen && 'bg-primary-blue'
+                )}
+            >
                 <button role="button">
                     <VscThreeBars size={30} onClick={() => setMenuOpen(!menuOpen)} className="text-white" />
                 </button>
@@ -151,17 +157,17 @@ const Navbar: NextPage<NavbarProps> = ({ logo }) => {
                         </Link>
                         {navLinks.map((nav, i) => (
                             <Link href={nav.href} key={i}>
-                                <StyledLink
+                                <a
                                     ref={React.createRef()}
                                     className={classNames(
-                                        'py-2',
+                                        'py-2 w-full text-left flex justify-start',
                                         nav.isActive
                                             ? linkTabClasses(['/candidates', '/vacancies'].includes(pathname)).active
                                             : linkTabClasses().default
                                     )}
                                 >
                                     {nav.label}
-                                </StyledLink>
+                                </a>
                             </Link>
                         ))}
                     </div>

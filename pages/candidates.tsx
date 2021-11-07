@@ -46,7 +46,7 @@ export const Candidates: NextPage<StaticPageProps<typeof getStaticProps>> = ({ c
                 <Header title={title} bgColor="bg-gradient-to-br from-primary-yellow to-secondary-yellow" />
                 <section className="relative p-4 md:py-32">
                     <div
-                        className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+                        className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 hidden sm:block"
                         style={{ height: '80px', transform: 'translateZ(0)' }}
                     >
                         <Polygon fillColor="#eeeeee" />
@@ -54,22 +54,22 @@ export const Candidates: NextPage<StaticPageProps<typeof getStaticProps>> = ({ c
 
                     <div className="container max-w-7xl mx-auto px-4 bg-light">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                            <div className="flex items-center justify-center flex-col text-xl leading-8 text-justify">
-                                <div className="text-gray-400 text-2xl py-5">
+                            <div className="flex items-center justify-center flex-col text-base sm:text-xl leading-8 text-justify">
+                                <div className="text-gray-400 text-lg sm:text-2xl py-5">
                                     <RichText render={summary} />
                                 </div>
-                                <div className="text-xl leading-8 space-y-5">
+                                <div className="text-base sm:text-xl leading-6 sm:leading-8 space-y-5">
                                     <RichText render={description} />
                                 </div>
                             </div>
-                            <div className="flex flex-col items-center justify-center text-base leading-8">
+                            <div className="flex flex-col items-center justify-center text-base leading-6 sm:leading-8">
                                 <ImgCard img={background_image.url} />
                             </div>
                         </div>
                     </div>
                 </section>
                 <section className="bg-primary-blue w-full p-7 md:px-16 md:py-8">
-                    <div className="max-w-8xl mx-auto text-center py-8 text-3xl font-light uppercase tracking-wider text-primary-yellow">
+                    <div className="max-w-8xl mx-auto text-center py-8 text-xl sm:text-3xl font-light uppercase tracking-wider text-primary-yellow">
                         <RichText render={typical_role_title} />
                     </div>
                     <div
