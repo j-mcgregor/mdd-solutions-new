@@ -80,6 +80,27 @@ const Footer: NextPage<ContactDataProps> = ({ links, footnote }) => {
                         </ul>
                     </div>
                 </div>
+
+                <div className="container flex px-3 items-center justify-center w-full text-xs sm:text-sm text-primary-yellow">
+                    Site made by{' '}
+                    <a
+                        href="https://www.linkedin.com/in/jack-mcgregor/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-bold mx-1"
+                    >
+                        Jack McGregor
+                    </a>{' '}
+                    @{' '}
+                    <a
+                        href="http://www.manyana.io"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-bold mx-1"
+                    >
+                        Manyana Dev.
+                    </a>
+                </div>
             </div>
         </StyledFooter>
     )
