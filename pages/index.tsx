@@ -86,9 +86,10 @@ export const Home: NextPage<StaticPageProps<typeof getStaticProps>> = ({ homepag
                         </div>
                     </section>
                     {/* ============== DESC 1 ============== */}
-                    <section className="relative pt-10 sm:pt-20 pb-12 sm:pb-32 flex content-center items-center justify-center bg-light">
+                    <section className="relative pt-10 sm:pt-20 pb-12 sm:pb-32 flex content-center items-center justify-end bg-light">
                         <div className="container max-w-6xl relative mx-auto">
                             <div className="grid grid-cols-1 sm:grid-cols-3 text-base sm:text-xl text-dark p-10 xl:p-1">
+                                <div className="hidden sm:block" />
                                 <div className="sm:col-span-2 text-left sm:text-justify text-base sm:text-xl leading-6 sm:leading-8">
                                     <RichText render={description_1} htmlSerializer={htmlSerializer} />
                                 </div>
