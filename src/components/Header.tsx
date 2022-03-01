@@ -36,7 +36,7 @@ const Header: React.FC<HeaderProps> = ({ title, description, bgColor = 'bg-blue-
             </div>
             <div
                 className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden hidden sm:block"
-                style={{ height: '70px', transform: 'translateZ(0)' }}
+                style={{ height: '70px', transform: 'translateZ(0) translateY(1px)' }}
             >
                 <Polygon />
             </div>
